@@ -33,6 +33,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportMe.Web.Routes.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SupportMe.Web.Controllers.Tests", "Tests\SupportMe.Web.Controllers.Tests\SupportMe.Web.Controllers.Tests.csproj", "{7C55353F-CB74-4E8E-B272-42DA1C9C2194}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External Libraries", "External Libraries", "{90A231D7-D2BF-4A72-BBA6-3BCCE2063DD9}"
+	ProjectSection(SolutionItems) = preProject
+		External Libraries\Kendo.Mvc.dll = External Libraries\Kendo.Mvc.dll
+		External Libraries\Kendo.Mvc.README = External Libraries\Kendo.Mvc.README
+		External Libraries\Kendo.Mvc.xml = External Libraries\Kendo.Mvc.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
