@@ -55,7 +55,7 @@
             this.DbSet.Remove(entity);
         }
 
-        public void Save()
+        public void SaveChanges()
         {
             this.Context.SaveChanges();
         }

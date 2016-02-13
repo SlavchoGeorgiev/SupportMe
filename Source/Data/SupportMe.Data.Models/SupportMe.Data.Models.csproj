@@ -59,7 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationUser.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

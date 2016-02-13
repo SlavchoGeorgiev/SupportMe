@@ -6,7 +6,8 @@
     {
         public Configuration()
         {
-            this.AutomaticMigrationsEnabled = false;
+            // TODO: Fix it in poduction
+            this.AutomaticMigrationsEnabled = true;
             this.AutomaticMigrationDataLossAllowed = false;
         }
 

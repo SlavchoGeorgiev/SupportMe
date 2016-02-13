@@ -10,12 +10,22 @@
 
     using SupportMe.Data.Models;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public IDbSet<Company> Companies { get; set; }
+
+        public IDbSet<Location> Locations { get; set; }
+
+        public IDbSet<Contact> Contacts { get; set; }
+
+        public IDbSet<Address> Addresses { get; set; }
+
+        public IDbSet<Team> Teams { get; set; }
 
         public static ApplicationDbContext Create()
         {

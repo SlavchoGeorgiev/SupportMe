@@ -9,6 +9,7 @@
         public static void Initialize()
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            ApplicationDbContext.Create().Database.Initialize(true);
         }
     }
 }
