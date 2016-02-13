@@ -64,6 +64,10 @@
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
 
+            builder.RegisterGeneric(typeof(DbRepository<,>))
+                .As(typeof(IDbRepository<,>))
+                .InstancePerRequest();
+
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
         }
