@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\UserRole.cs" />
     <Compile Include="DbRepository{T}.cs" />
     <Compile Include="IDbRepository{T}.cs" />
     <Compile Include="Models\BaseModel{TKey}.cs" />

@@ -10,7 +10,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class User : IdentityUser, IAuditInfo, IDeletableEntity
+    public class User : IdentityUser, IDeletableEntity
     {
         private ICollection<Team> teams;
 
@@ -19,11 +19,9 @@
             this.teams = new HashSet<Team>();
         }
 
-        [Required]
         [MaxLength(80)]
         public string FirstName { get; set; }
 
-        [Required]
         [MaxLength(80)]
         public string LastName { get; set; }
 
@@ -42,10 +40,6 @@
             get { return this.teams; }
             set { this.teams = value; }
         }
-
-        public DateTime CreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
 
         [Index]
         public bool IsDeleted { get; set; }
