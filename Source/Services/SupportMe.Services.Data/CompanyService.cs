@@ -1,29 +1,14 @@
 ﻿namespace SupportMe.Services.Data
 {
-    using System.Linq;
     using Contracts;
     using SupportMe.Data.Common.Constants;
     using SupportMe.Data.Models;
 
-    public class CompanyService : ICompanyService
+    public class CompanyService : BaseService<Company>, ICompanyService
     {
-        private IDbRepository<Company> companyRepository;
-
-        public CompanyService(IDbRepository<Company> companyRepository)
+        public CompanyService(IDbRepository<Company> baseRepository)
         {
-            this.companyRepository = companyRepository;
-        }
-
-        public IQueryable<Company> GetAll()
-        {
-            return this.companyRepository.All();
-        }
-
-        public IQueryable<Company> GetById(int id)
-        {
-            return this.companyRepository
-                .All()
-                .Where(c => c.Id == id);
+            this.baseRepository = baseRepository;
         }
 
         public int Create(string name, int? contactId)
@@ -34,27 +19,19 @@
                 ContactId = contactId
             };
 
-            this.companyRepository.Add(company);
-            this.companyRepository.SaveChanges();
+            this.baseRepository.Add(company);
+            this.baseRepository.SaveChanges();
 
             return company.Id;
         }
 
         public Company Update(int id, string name, int? contactId)
         {
-            var company = this.companyRepository.GetById(id);
+            var company = this.baseRepository.GetById(id);
             company.Name = name;
             company.ContactId = contactId;
-            this.companyRepository.SaveChanges();
+            this.baseRepository.SaveChanges();
 
-            return company;
-        }
-
-        public Company Delete(int id)
-        {
-            var company = this.companyRepository.GetById(id);
-            this.companyRepository.Delete(company);
-            this.companyRepository.SaveChanges();
             return company;
         }
     }

@@ -1,0 +1,64 @@
+﻿@using Kendo.Mvc.UI
+@using SupportMe.Web.Areas.Admin.Models.Addresses
+@{
+    ViewBag.Title = "Addresses";
+}
+<div class="row">
+    <h1>Company Addresses Panel</h1>
+</div>
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Addresses</h3>
+        </div>
+        <div class="panel-body">
+            @(Html.Kendo()
+                  .Grid<AddressViewModel>()
+                  .Name("addresses-grid")
+                  .Columns(colums =>
+                  {
+                      colums.Bound(col => col.Id);
+                      colums.Bound(col => col.Country);
+                      colums.Bound(col => col.City);
+                      colums.Bound(col => col.Street);
+                      colums.Bound(col => col.State);
+                      colums.Bound(col => col.ZipCode);
+                      colums.Command(comand => comand.Edit());
+                      colums.Command(comand => comand.Destroy());
+                  })
+                  .ColumnMenu()
+                  .ToolBar(tools =>
+                  {
+                      tools.Create().Text("Add new Address");
+                      tools.Excel().Text("Export Addresees to Excel");
+                  })
+                  .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                  .Pageable(page => page.Refresh(true))
+                  .Sortable()
+                  .Filterable()
+                  .Excel(excel =>
+                  {
+                      excel.AllPages(true);
+                      excel.FileName("Addresses_" + DateTime.Now.ToString() + ".xlsx");
+                      excel.Filterable(true);
+                      excel.ProxyURL(Url.Action("ExportToExcel", "Address"));
+                  })
+                  .Groupable()
+                  .DataSource(datasource =>
+                  {
+                      datasource
+                          .Ajax()
+                          .PageSize(10)
+                          .Model(m => m.Id(company => company.Id))
+                          .Read(read => read.Action("Read", "Address"))
+                          .Create(create => create.Action("Create", "Address"))
+                          .Update(update => update.Action("Update", "Address"))
+                          .Destroy(destroy => destroy.Action("Destroy", "Address"));
+                  }))
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="http://kendo.cdn.telerik.com/2016.1.112/js/jszip.min.js"></script>
+}

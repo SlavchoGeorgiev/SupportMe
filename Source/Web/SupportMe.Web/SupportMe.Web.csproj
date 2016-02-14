@@ -203,9 +203,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AddressController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
-    <Compile Include="Areas\Admin\Models\CompanyViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Addresses\AddressViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Companies\CompanyViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -268,6 +270,7 @@
     <Content Include="Content\Kendo\kendo.common-bootstrap.min.css.map" />
     <Content Include="Content\Kendo\kendo.common.core.min.css.map" />
     <Content Include="Content\Kendo\kendo.common.min.css.map" />
+    <Content Include="Areas\Admin\Views\Address\Index.cshtml" />
     <None Include="Areas\Admin\Views\Company\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />

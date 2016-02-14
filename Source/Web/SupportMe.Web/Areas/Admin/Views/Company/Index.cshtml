@@ -1,5 +1,5 @@
 ﻿@using Kendo.Mvc.UI
-@using SupportMe.Web.Areas.Admin.Models
+@using SupportMe.Web.Areas.Admin.Models.Companies
 @{
     ViewBag.Title = "Companies";
 }
@@ -13,34 +13,34 @@
         </div>
         <div class="panel-body">
             @(Html.Kendo()
-              .Grid<CompanyViewModel>()
-              .Name("companies-grid")
-              .Columns(colums =>
-              {
-                  colums.Bound(col => col.Id);
-                  colums.Bound(col => col.Name);
-                  colums.Bound(col => col.ContactId);
-                  colums.Command(comand => comand.Edit());
-                  colums.Command(comand => comand.Destroy());
-              })
-              .ColumnMenu()
-              .ToolBar(tools => tools.Create().Text("Add new Company"))
-              .Editable(edit => edit.Mode(GridEditMode.PopUp))
-              .Pageable(page => page.Refresh(true))
-              .Sortable()
-              .Filterable()
-              .Groupable()
-              .DataSource(datasource =>
-              {
-                  datasource
-                      .Ajax()
-                      .PageSize(10)
-                      .Model(m => m.Id(company => company.Id))
-                      .Read(read => read.Action("Read", "Company"))
-                      .Create(create => create.Action("Create", "Company"))
-                      .Update(update => update.Action("Update", "Company"))
-                      .Destroy(destroy => destroy.Action("Destroy", "Company"));
-              }))
+                  .Grid<CompanyViewModel>()
+                  .Name("companies-grid")
+                  .Columns(colums =>
+                  {
+                      colums.Bound(col => col.Id);
+                      colums.Bound(col => col.Name);
+                      colums.Bound(col => col.ContactId);
+                      colums.Command(comand => comand.Edit());
+                      colums.Command(comand => comand.Destroy());
+                  })
+                  .ColumnMenu()
+                  .ToolBar(tools => tools.Create().Text("Add new Company"))
+                  .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                  .Pageable(page => page.Refresh(true))
+                  .Sortable()
+                  .Filterable()
+                  .Groupable()
+                  .DataSource(datasource =>
+                  {
+                      datasource
+                          .Ajax()
+                          .PageSize(10)
+                          .Model(m => m.Id(company => company.Id))
+                          .Read(read => read.Action("Read", "Company"))
+                          .Create(create => create.Action("Create", "Company"))
+                          .Update(update => update.Action("Update", "Company"))
+                          .Destroy(destroy => destroy.Action("Destroy", "Company"));
+                  }))
         </div>
     </div>
 </div>

@@ -10,7 +10,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class User : IdentityUser, IDeletableEntity
+    public class User : IdentityUser, IDeletableEntity, IAuditInfo
     {
         private ICollection<Team> teams;
 
@@ -40,6 +40,10 @@
             get { return this.teams; }
             set { this.teams = value; }
         }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime? ModifiedOn { get; set; }
 
         [Index]
         public bool IsDeleted { get; set; }

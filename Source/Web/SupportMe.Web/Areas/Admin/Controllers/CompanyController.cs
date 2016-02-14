@@ -5,7 +5,7 @@
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Models;
+    using Models.Companies;
     using Services.Data.Contracts;
 
     public class CompanyController : AdministrationController
@@ -17,9 +17,10 @@
             this.companyService = companyService;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
-            return this.View(this.CurrentUser.FirstName + this.CurrentUser.LastName);
+            return this.View();
         }
 
         [HttpPost]
