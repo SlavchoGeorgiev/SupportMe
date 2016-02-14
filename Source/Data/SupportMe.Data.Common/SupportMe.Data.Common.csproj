@@ -52,8 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\UserRole.cs" />
+    <Compile Include="Contracts\IGenericRepository{T}.cs" />
     <Compile Include="DbRepository{T}.cs" />
-    <Compile Include="IDbRepository{T}.cs" />
+    <Compile Include="Contracts\IDbRepository{T}.cs" />
+    <Compile Include="GenericRepository{T}.cs" />
     <Compile Include="Models\BaseModel{TKey}.cs" />
     <Compile Include="Models\IAuditInfo.cs" />
     <Compile Include="Models\IDeletableEntity.cs" />

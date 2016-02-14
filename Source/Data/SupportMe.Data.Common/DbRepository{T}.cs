@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
-
+    using Constants;
     using SupportMe.Data.Common.Models;
 
     public class DbRepository<T> : IDbRepository<T>

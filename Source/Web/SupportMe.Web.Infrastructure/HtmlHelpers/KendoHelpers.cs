@@ -31,12 +31,12 @@
                 .Name("grid")
                 .Columns(columns)
                 .ColumnMenu()
+                .ToolBar(toolbar => toolbar.Create())
+                .Editable(edit => edit.Mode(GridEditMode.PopUp))
                 .Pageable(page => page.Refresh(true))
                 .Sortable()
                 .Groupable()
                 .Filterable()
-                .Editable(edit => edit.Mode(GridEditMode.PopUp))
-                .ToolBar(toolbar => toolbar.Create())
                 .DataSource(data =>
                     data
                         .Ajax()

@@ -1,8 +1,7 @@
-﻿namespace SupportMe.Data.Common
+﻿namespace SupportMe.Data.Common.Constants
 {
     using System.Linq;
-
-    using SupportMe.Data.Common.Models;
+    using Models;
 
     public interface IDbRepository<T> : IDbRepository<T, int>
         where T : BaseModel<int>

@@ -11,6 +11,8 @@
 
     using Data;
     using Data.Common;
+    using Data.Common.Constants;
+    using Data.Common.Contracts;
     using Services.Data.Contracts;
     using Services.Web;
     using Services.Web.Contracts;
@@ -50,26 +52,31 @@
             builder.Register(x => new ApplicationDbContext())
                 .As<DbContext>()
                 .InstancePerRequest();
+
             builder.Register(x => new HttpCacheService())
                 .As<ICacheService>()
                 .InstancePerRequest();
+
             builder.Register(x => new IdentifierProvider())
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
 
             var servicesAssembly = Assembly.GetAssembly(typeof(IDataService));
-            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(servicesAssembly)
+                .AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
 
-            builder.RegisterGeneric(typeof(DbRepository<,>))
-                .As(typeof(IDbRepository<,>))
+            builder.RegisterGeneric(typeof(GenericRepository<>))
+                .As(typeof(IGenericRepository<>))
                 .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-                .AssignableTo<BaseController>().PropertiesAutowired();
+                .AssignableTo<BaseController>()
+                .PropertiesAutowired()
+                .InstancePerRequest();
         }
     }
 }

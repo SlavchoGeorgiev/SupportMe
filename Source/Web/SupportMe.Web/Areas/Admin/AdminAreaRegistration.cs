@@ -1,6 +1,7 @@
 ﻿namespace SupportMe.Web.Areas.Admin
 {
     using System.Web.Mvc;
+    using Common;
 
     public class AdminAreaRegistration : AreaRegistration
     {
@@ -8,7 +9,7 @@
         {
             get
             {
-                return "Admin";
+                return MvcArea.Admin;
             }
         }
 
