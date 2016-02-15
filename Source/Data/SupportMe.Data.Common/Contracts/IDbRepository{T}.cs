@@ -1,4 +1,4 @@
-﻿namespace SupportMe.Data.Common.Constants
+﻿namespace SupportMe.Data.Common.Contracts
 {
     using System.Linq;
     using Models;

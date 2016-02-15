@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
     using Common;
+    using Common.Constants;
 
     public class AdminAreaRegistration : AreaRegistration
     {

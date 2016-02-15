@@ -1,14 +1,14 @@
 ﻿namespace SupportMe.Services.Data
 {
     using Contracts;
-    using SupportMe.Data.Common.Constants;
+    using SupportMe.Data.Common.Contracts;
     using SupportMe.Data.Models;
 
     public class AddressService : BaseService<Address>, IAddressService
     {
         public AddressService(IDbRepository<Address> baseRepository)
         {
-            this.baseRepository = baseRepository;
+            this.BaseRepository = baseRepository;
         }
 
         public Address Create(string country, string city, string street, string state, string zipCode)
@@ -22,21 +22,21 @@
                 ZipCode = zipCode
             };
 
-            this.baseRepository.Add(address);
-            this.baseRepository.SaveChanges();
+            this.BaseRepository.Add(address);
+            this.BaseRepository.SaveChanges();
 
             return address;
         }
 
         public Address Update(int id, string country, string city, string street, string state, string zipCode)
         {
-            var address = this.baseRepository.GetById(id);
+            var address = this.BaseRepository.GetById(id);
             address.Country = country;
             address.City = city;
             address.Street = street;
             address.State = state;
             address.ZipCode = zipCode;
-            this.baseRepository.SaveChanges();
+            this.BaseRepository.SaveChanges();
 
             return address;
         }

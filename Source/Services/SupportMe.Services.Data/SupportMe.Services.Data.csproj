@@ -62,9 +62,11 @@
     <Compile Include="AddressService.cs" />
     <Compile Include="BaseService.cs" />
     <Compile Include="CompanyService.cs" />
+    <Compile Include="ContactService.cs" />
     <Compile Include="Contracts\IAddressService.cs" />
     <Compile Include="Contracts\IBaseService.cs" />
     <Compile Include="Contracts\ICompanyService.cs" />
+    <Compile Include="Contracts\IContactService.cs" />
     <Compile Include="Contracts\IDataService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

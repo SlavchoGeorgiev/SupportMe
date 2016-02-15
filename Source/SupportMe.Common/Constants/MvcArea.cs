@@ -1,4 +1,4 @@
-﻿namespace SupportMe.Common
+﻿namespace SupportMe.Common.Constants
 {
 
     public static class MvcArea

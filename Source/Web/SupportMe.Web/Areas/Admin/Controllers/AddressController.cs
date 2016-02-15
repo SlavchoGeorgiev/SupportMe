@@ -26,11 +26,11 @@
         [HttpPost]
         public ActionResult Read([DataSourceRequest] DataSourceRequest request)
         {
-            var companies = this.addressService
+            var addresses = this.addressService
                 .GetAll()
                 .To<AddressViewModel>();
 
-            var result = companies.ToDataSourceResult(request);
+            var result = addresses.ToDataSourceResult(request);
             return this.Json(result);
         }
 

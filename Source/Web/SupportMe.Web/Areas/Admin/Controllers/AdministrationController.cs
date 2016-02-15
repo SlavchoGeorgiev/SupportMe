@@ -13,7 +13,7 @@
         {
             var fileContents = Convert.FromBase64String(base64);
 
-            return File(fileContents, contentType, fileName);
+            return this.File(fileContents, contentType, fileName);
         }
     }
 }

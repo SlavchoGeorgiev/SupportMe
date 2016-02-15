@@ -1,16 +1,14 @@
 ﻿namespace SupportMe.Data.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using Common.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class User : IdentityUser, IDeletableEntity, IAuditInfo
+    public class User : IdentityUser
     {
         private ICollection<Team> teams;
 
@@ -40,15 +38,6 @@
             get { return this.teams; }
             set { this.teams = value; }
         }
-
-        public DateTime CreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
-
-        [Index]
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

@@ -4,6 +4,7 @@
     using System.Data.Entity;
     using System.Linq;
     using Constants;
+    using Contracts;
     using SupportMe.Data.Common.Models;
 
     public class DbRepository<T> : IDbRepository<T>

@@ -1,36 +1,34 @@
 ﻿@using Kendo.Mvc.UI
-@using SupportMe.Web.Areas.Admin.Models.Addresses
+@using SupportMe.Web.Areas.Admin.Models.Contacts
 @{
-    ViewBag.Title = "Addresses";
+    ViewBag.Title = "Contacts";
 }
 <div class="row">
-    <h1>Addresses Panel</h1>
+    <h1>Contact Panel</h1>
 </div>
 <div class="row">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h3 class="panel-title">Addresses</h3>
+            <h3 class="panel-title">Contacts</h3>
         </div>
         <div class="panel-body">
             @(Html.Kendo()
-                  .Grid<AddressViewModel>()
+                  .Grid<ContactViewModel>()
                   .Name("addresses-grid")
                   .Columns(colums =>
                   {
                       colums.Bound(col => col.Id);
-                      colums.Bound(col => col.Country);
-                      colums.Bound(col => col.City);
-                      colums.Bound(col => col.Street);
-                      colums.Bound(col => col.State);
-                      colums.Bound(col => col.ZipCode);
+                      colums.Bound(col => col.Email);
+                      colums.Bound(col => col.PhoneNumber);
+                      colums.Bound(col => col.AddressName);
                       colums.Command(comand => comand.Edit());
                       colums.Command(comand => comand.Destroy());
                   })
                   .ColumnMenu()
                   .ToolBar(tools =>
                   {
-                      tools.Create().Text("Add new Address");
-                      tools.Excel().Text("Export Addresees to Excel");
+                      tools.Create().Text("Add new Contact");
+                      tools.Excel().Text("Export Contacts to Excel");
                   })
                   .Editable(edit => edit.Mode(GridEditMode.PopUp))
                   .Pageable(page => page.Refresh(true))
@@ -39,9 +37,9 @@
                   .Excel(excel =>
                   {
                       excel.AllPages(true);
-                      excel.FileName("Addresses_" + DateTime.Now.ToString() + ".xlsx");
+                      excel.FileName("Contacts_" + DateTime.Now.ToString() + ".xlsx");
                       excel.Filterable(true);
-                      excel.ProxyURL(Url.Action("ExportToExcel", "Address"));
+                      excel.ProxyURL(Url.Action("ExportToExcel", "Contact"));
                   })
                   .Groupable()
                   .DataSource(datasource =>
@@ -50,10 +48,10 @@
                           .Ajax()
                           .PageSize(10)
                           .Model(m => m.Id(model => model.Id))
-                          .Read(read => read.Action("Read", "Address"))
-                          .Create(create => create.Action("Create", "Address"))
-                          .Update(update => update.Action("Update", "Address"))
-                          .Destroy(destroy => destroy.Action("Destroy", "Address"));
+                          .Read(read => read.Action("Read", "Contact"))
+                          .Create(create => create.Action("Create", "Contact"))
+                          .Update(update => update.Action("Update", "Contact"))
+                          .Destroy(destroy => destroy.Action("Destroy", "Contact"));
                   }))
         </div>
     </div>
