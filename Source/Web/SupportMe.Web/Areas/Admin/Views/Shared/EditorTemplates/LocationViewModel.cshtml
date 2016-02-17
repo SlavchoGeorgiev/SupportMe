@@ -1,0 +1,31 @@
+﻿@using System.Collections
+@model SupportMe.Web.Areas.Admin.Models.Locations.LocationViewModel
+
+<div class="errors"></div>
+
+@Html.HiddenFor(m => m.Id)
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.Name)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.CompanyId)
+</div>
+<div class="editor-field">
+    @(Html.Kendo()
+          .DropDownListFor(m => m.CompanyId)
+          .DataValueField("Id")
+          .DataTextField("Name")
+          .DataSource(data =>
+          {
+              data.Read("Read", "Company");
+          })
+          .AutoBind(false))
+</div>
+
+@Html.Partial("_KendoGridValidationErrorsXKendoTemplate")

@@ -75,7 +75,7 @@
             if (this.ModelState.IsValid && model != null)
             {
                 int id = this.contactService
-                    .Create(model.PhoneNumber, model.Email, model.AddressId)
+                    .Create(model.PhoneNumber, model.Email, int.Parse(model.AddressId))
                     .Id;
 
                 model = this.contactService
@@ -93,7 +93,7 @@
             if (this.ModelState.IsValid && model != null)
             {
                 int id = this.contactService
-                    .Update(model.Id, model.PhoneNumber, model.Email, model.AddressId)
+                    .Update(model.Id, model.PhoneNumber, model.Email, int.Parse(model.AddressId))
                     .Id;
                 model = this.contactService
                     .GetById(id)

@@ -2,6 +2,7 @@
 {
     using System;
     using Contracts;
+    using Microsoft.AspNet.Identity;
     using SupportMe.Data.Common.Contracts;
     using SupportMe.Data.Models;
 
@@ -9,12 +10,16 @@
     {
         private readonly IDbRepository<Company> companyRepository;
 
+        private readonly IDbRepository<Location> locationRepository;
+
         public ContactService(
             IDbRepository<Contact> baseRepository,
-            IDbRepository<Company> companyRepository)
+            IDbRepository<Company> companyRepository,
+            IDbRepository<Location> locationRepository)
         {
-            this.companyRepository = companyRepository;
             this.BaseRepository = baseRepository;
+            this.companyRepository = companyRepository;
+            this.locationRepository = locationRepository;
         }
 
         public Contact Create(string phoneNumber, string email, int? addressId)
@@ -56,8 +61,13 @@
                 return $"Contact set to {company.Name}";
             } else if (holder.ToLower() == "location")
             {
-                // TODO Implement it
-                throw new NotImplementedException();
+                var location = this.locationRepository
+                       .GetById(holdeId);
+
+                location.ContactId = contactId;
+                this.locationRepository.SaveChanges();
+
+                return $"Contact set to {location.Name}";
             } else if (holder.ToLower() == "user")
             {
                 // TODO Implement it

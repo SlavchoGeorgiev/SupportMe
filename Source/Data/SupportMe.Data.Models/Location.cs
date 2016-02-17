@@ -16,6 +16,7 @@
 
         [Required]
         [MaxLength(80)]
+        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         public int CompanyId { get; set; }

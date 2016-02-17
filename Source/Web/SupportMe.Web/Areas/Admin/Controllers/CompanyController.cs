@@ -23,6 +23,18 @@
             return this.View();
         }
 
+        [HttpGet]
+        [ActionName("Read")]
+        public ActionResult ReadGet([DataSourceRequest]DataSourceRequest request)
+        {
+            var companies = this.companyService
+                .GetAll()
+                .To<CompanyDropDownViewModel>()
+                .ToArray();
+
+            return this.Json(companies, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
         public ActionResult Read([DataSourceRequest]DataSourceRequest request)
         {

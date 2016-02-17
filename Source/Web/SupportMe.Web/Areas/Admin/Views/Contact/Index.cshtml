@@ -1,12 +1,9 @@
-﻿@using Kendo.Mvc.UI
-@using SupportMe.Web.Areas.Admin.Models.Contacts
+﻿@using SupportMe.Web.Areas.Admin.Models.Contacts
 @model ContactIndexViewModel
 @{
     ViewBag.Title = "Contacts";
 }
-<div class="row">
-    <h1>Contact Panel</h1>
-</div>
+@Html.Partial("_ManagmentHeader")
 <div class="row">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -17,7 +14,7 @@
             <div class="table-responsive">
                 @(Html.Kendo()
                   .Grid<ContactViewModel>()
-                  .Name("addresses-grid")
+                  .Name("my-kendo-grid")
                   .Columns(colums =>
                   {
                       colums.Bound(col => col.Id);
@@ -83,4 +80,5 @@
 @section scripts {
     <script src="http://kendo.cdn.telerik.com/2016.1.112/js/jszip.min.js"></script>
     @Scripts.Render("~/bundles/jqueryuno")
+    @Scripts.Render("~/bundles/pagespecific");
 }

@@ -1,0 +1,53 @@
+﻿@using SupportMe.Web.Areas.Admin.Models.Locations
+@{
+    ViewBag.Title = "Locations";
+}
+@Html.Partial("_ManagmentHeader")
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">@ViewBag.Title</h3>
+        </div>
+        <div class="panel-body">
+            @(Html.Kendo()
+                  .Grid<LocationViewModel>()
+                  .Name("my-kendo-grid")
+                  .Columns(colums =>
+                  {
+                      colums.Bound(col => col.Id);
+                      colums.Bound(col => col.Name);
+                      colums.Bound(col => col.CompanyName);
+                      colums.Bound(col => col.ContactId);
+                      colums.Bound(col => col.Id)
+                          .ClientTemplate("<a href='/Admin/Contact/Index/#: Id#/Location' class='btn btn-primary'>Set location contact</a>")
+                          .HeaderTemplate("Set location contact");
+                      colums.Command(comand => comand.Edit());
+                      colums.Command(comand => comand.Destroy());
+                  })
+                  .ColumnMenu()
+                  .ToolBar(tools => tools.Create().Text("Add new Location"))
+                  .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                  .Pageable(page => page.Refresh(true))
+                  .Sortable()
+                  .Filterable()
+                  .Groupable()
+                  .DataSource(datasource =>
+                  {
+                      datasource
+                          .Ajax()
+                          .PageSize(10)
+                          .Model(m => m.Id(company => company.Id))
+                          .Read(read => read.Action("Read", "Location"))
+                          .Create(create => create.Action("Create", "Location"))
+                          .Update(update => update.Action("Update", "Location"))
+                          .Destroy(destroy => destroy.Action("Destroy", "Location"))
+                          .Events(events => events.Error("onGridValidationError"));
+                  }))
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="http://kendo.cdn.telerik.com/2016.1.112/js/jszip.min.js"></script>
+    @Scripts.Render("~/bundles/pagespecific");
+}

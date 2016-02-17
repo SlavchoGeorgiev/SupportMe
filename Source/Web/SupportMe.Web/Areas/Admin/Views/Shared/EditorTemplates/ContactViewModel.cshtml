@@ -1,5 +1,4 @@
 ﻿@using System.Collections
-@using Kendo.Mvc.UI
 @model SupportMe.Web.Areas.Admin.Models.Contacts.ContactViewModel
 
 <div class="editor-label">
@@ -22,11 +21,12 @@
     @Html.LabelFor(m => m.AddressId)
 </div>
 <div class="editor-field">
-    @*@(Html.Kendo()
-    .DropDownListFor(m => m.AddressId)
-    .DataValueField("Value")
-    .DataTextField("Text")
-    .BindTo((IEnumerable)ViewBag.Addresses))*@
-
-    @Html.DropDownListFor(m => m.AddressId, new SelectList((IEnumerable)ViewBag.Addresses, "Value", "Text"), new { @class = "k-input k-autocomplete" })
+    @(Html.Kendo()
+          .DropDownListFor(m => m.AddressId)
+          .DataValueField("Value")
+          .DataTextField("Text")
+          .BindTo((IEnumerable) ViewBag.Addresses))
+    @*@Html.DropDownListFor(m => m.AddressId, new SelectList((IEnumerable)ViewBag.Addresses, "Value", "Text"), new { @class = "k-input k-autocomplete" })*@
 </div>
+
+@Html.Partial("_KendoGridValidationErrorsXKendoTemplate")

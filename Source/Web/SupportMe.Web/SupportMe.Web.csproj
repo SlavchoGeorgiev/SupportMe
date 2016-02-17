@@ -207,10 +207,13 @@
     <Compile Include="Areas\Admin\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
     <Compile Include="Areas\Admin\Models\Addresses\AddressViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Companies\CompanyDropDownViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Companies\CompanyViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Contacts\ContactViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Contacts\ContactIndexViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Locations\LocationViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -278,6 +281,9 @@
     <None Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\ContactViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\Contact\_SetMassage.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_ManagmentHeader.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\LocationViewModel.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -292,6 +298,7 @@
     <Content Include="Scripts\Kendo\jszip.min.js" />
     <Content Include="Scripts\Kendo\kendo.all.min.js" />
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js" />
+    <Content Include="Scripts\page.specific.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -342,6 +349,7 @@
     <Content Include="Scripts\Kendo\kendo.all.min.js.map" />
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Shared\_GlobalMessages.cshtml" />
+    <Content Include="Views\Shared\_KendoGridValidationErrorsXKendoTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

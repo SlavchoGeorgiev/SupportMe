@@ -24,6 +24,9 @@
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/pagespecific").Include(
+                        "~/Scripts/page.specific.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/CosmoTheme/bootstrap.css",
                       "~/Content/Kendo/kendo.common.min.css",

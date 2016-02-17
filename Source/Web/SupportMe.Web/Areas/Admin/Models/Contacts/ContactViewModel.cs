@@ -18,13 +18,12 @@
         public string PhoneNumber { get; set; }
 
         [MaxLength(254)]
-
         [Display(Name = "Email address")]
         public string Email { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         [Display(Name = "Address")]
-        public int? AddressId { get; set; }
+        public string AddressId { get; set; }
 
         [Display(Name = "Address")]
         public string AddressName { get; set; }
@@ -34,10 +33,11 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Contact, ContactViewModel>()
-            .ForMember(
-                vm => vm.AddressName,
-                opts => opts.MapFrom(
-                    dbm => dbm.Address != null ? dbm.Address.Country.ToString() + ", " + dbm.Address.City.ToString() + ", " + dbm.Address.Street.ToString() : "No Address"));
+                .ForMember(
+                    vm => vm.AddressName,
+                    opts => opts.MapFrom(
+                        dbm => dbm.Address != null ? dbm.Address.Country.ToString() + ", " + dbm.Address.City.ToString() + ", " + dbm.Address.Street.ToString() : "No Address"))
+                .ForMember(vm => vm.AddressId, opt => opt.MapFrom(dbm => dbm.AddressId.ToString()));
         }
     }
 }

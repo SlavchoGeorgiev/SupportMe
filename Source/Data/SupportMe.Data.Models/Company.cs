@@ -15,6 +15,7 @@
         }
 
         [Required]
+        [Index(IsUnique = true)]
         [MaxLength(100)]
         public string Name { get; set; }
 
