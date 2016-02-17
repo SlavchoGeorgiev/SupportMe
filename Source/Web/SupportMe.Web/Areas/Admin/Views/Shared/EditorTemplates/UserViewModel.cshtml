@@ -1,0 +1,54 @@
+﻿@model SupportMe.Web.Areas.Admin.Models.Users.UserViewModel
+
+<div class="errors"></div>
+
+@Html.HiddenFor(m => m.Id)
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.FirstName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(m => m.FirstName)
+    @Html.ValidationMessageFor(m => m.FirstName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.LastName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(m => m.LastName)
+    @Html.ValidationMessageFor(m => m.LastName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.UserName)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(m => m.UserName)
+    @Html.ValidationMessageFor(m => m.UserName)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.Email)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(m => m.Email)
+    @Html.ValidationMessageFor(m => m.Email)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.LocationName)
+</div>
+<div class="editor-field">
+    @(Html.Kendo()
+          .DropDownListFor(m => m.LocationId)
+          .DataValueField("Id")
+          .DataTextField("Name")
+          .DataSource(data =>
+          {
+              data.Read("Read", "Location");
+          })
+          .AutoBind(false))
+</div>
+
+@Html.Partial("_KendoGridValidationErrorsXKendoTemplate")

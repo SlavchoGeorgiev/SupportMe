@@ -24,14 +24,14 @@
         }
 
         [HttpGet]
-        public ActionResult Index(int? id, string holder)
+        public ActionResult Index(string id, string holder)
         {
             var model = new ContactIndexViewModel() { Selectable = false };
             if (id != null && this.contactHolders.Contains(holder))
             {
                 model.Selectable = true;
                 model.Holder = holder;
-                model.HolderId = (int)id;
+                model.HolderId = id;
             }
 
             this.ViewBag.Addresses = this.addressService
@@ -47,12 +47,12 @@
         }
 
         [HttpPost]
-        public ActionResult SetTo(int? id, string holder, int contactId)
+        public ActionResult SetTo(string id, string holder, int contactId)
         {
             string massage = "Invalid request";
             if (id != null && this.contactHolders.Contains(holder))
             {
-                massage = this.contactService.SetTo((int)id, holder, contactId);
+                massage = this.contactService.SetTo(id, holder, contactId);
             }
 
             return this.PartialView("_SetMassage", massage);

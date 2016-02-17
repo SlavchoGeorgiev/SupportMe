@@ -12,6 +12,9 @@
     using Data;
     using Data.Common;
     using Data.Common.Contracts;
+    using Data.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Services.Data.Contracts;
     using Services.Web;
     using Services.Web.Contracts;
@@ -59,6 +62,10 @@
             builder.Register(x => new IdentifierProvider())
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
+
+            builder.RegisterType<UserStore<User>>()
+                .As<IUserStore<User>>();
+            builder.RegisterType<UserManager<User>>();
 
             var servicesAssembly = Assembly.GetAssembly(typeof(IDataService));
             builder.RegisterAssemblyTypes(servicesAssembly)

@@ -2,7 +2,6 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using Common.Constants;
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
@@ -35,6 +34,19 @@
 
             var result = locations.ToDataSourceResult(request);
             return this.Json(result);
+        }
+
+        [HttpGet]
+        [ActionName("Read")]
+        [OutputCache(Duration = 1 * 60)]
+        public ActionResult ReadGet([DataSourceRequest]DataSourceRequest request)
+        {
+            var locations = this.locationService
+                .GetAll()
+                .To<LocationDropDownViewModel>()
+                .ToArray();
+
+            return this.Json(locations, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

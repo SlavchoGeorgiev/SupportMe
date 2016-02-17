@@ -1,6 +1,7 @@
-﻿@using SupportMe.Web.Areas.Admin.Models.Locations
+﻿
+@using SupportMe.Web.Areas.Admin.Models.Users
 @{
-    ViewBag.Title = "Locations";
+    ViewBag.Title = "Users";
 }
 @Html.Partial("_ManagmentHeader")
 <div class="row">
@@ -10,26 +11,26 @@
         </div>
         <div class="panel-body">
             @(Html.Kendo()
-                  .Grid<LocationViewModel>()
+                  .Grid<UserViewModel>()
                   .Name("my-kendo-grid")
                   .Columns(colums =>
                   {
                       colums.Bound(col => col.Id);
-                      colums.Bound(col => col.Name);
-                      colums.Bound(col => col.CompanyName);
-                      colums.Bound(col => col.ContactId);
+                      colums.Bound(col => col.UserName);
+                      colums.Bound(col => col.Email);
+                      colums.Bound(col => col.FirstName);
+                      colums.Bound(col => col.LastName);
+                      colums.Bound(col => col.LocationName);
                       colums.Bound(col => col.Id)
-                          .ClientTemplate("<a href='/Admin/Contact/Index/#: Id#/Location' class='btn btn-primary'>Set</a>")
-                          .HeaderTemplate("Set location contact");
+                          .ClientTemplate("<a href='/Admin/Contact/Index/#: Id#/User' class='btn btn-primary'>Set</a>")
+                          .HeaderTemplate("Set user contact");
                       colums.Command(comand => comand.Edit());
                       colums.Command(comand => comand.Destroy());
                   })
                   .ColumnMenu()
-
                   .ToolBar(tools =>
                   {
-                      tools.Create().Text("Add new Location");
-                      tools.Excel().Text("Export Addresees to Excel");
+                      tools.Excel().Text($"Export {ViewBag.Title} to Excel");
                   })
                   .Editable(edit => edit.Mode(GridEditMode.PopUp))
                   .Pageable(page => page.Refresh(true))
@@ -48,11 +49,10 @@
                       datasource
                           .Ajax()
                           .PageSize(10)
-                          .Model(m => m.Id(model => model.Id))
-                          .Read(read => read.Action("Read", "Location"))
-                          .Create(create => create.Action("Create", "Location"))
-                          .Update(update => update.Action("Update", "Location"))
-                          .Destroy(destroy => destroy.Action("Destroy", "Location"))
+                          .Model(m => m.Id(x => x.Id))
+                          .Read(read => read.Action("Read", "User"))
+                          .Update(update => update.Action("Update", "User"))
+                          .Destroy(destroy => destroy.Action("Destroy", "User"))
                           .Events(events => events.Error("onGridValidationError"));
                   }))
         </div>

@@ -12,7 +12,7 @@
     {
         public ICacheService Cache { get; set; }
 
-        public IUsersService UsersServices { get; set; }
+        public IUserService UsersServices { get; set; }
 
         protected User CurrentUser { get; set; }
 

@@ -2,7 +2,7 @@
 {
     public class ContactIndexViewModel
     {
-        public int HolderId { get; set; }
+        public string HolderId { get; set; }
 
         public string Holder { get; set; }
 

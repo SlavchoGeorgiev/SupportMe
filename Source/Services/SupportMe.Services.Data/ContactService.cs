@@ -1,6 +1,6 @@
 ﻿namespace SupportMe.Services.Data
 {
-    using System;
+    using System.Linq;
     using Contracts;
     using Microsoft.AspNet.Identity;
     using SupportMe.Data.Common.Contracts;
@@ -12,14 +12,18 @@
 
         private readonly IDbRepository<Location> locationRepository;
 
+        private readonly IGenericRepository<User> userRepository;
+
         public ContactService(
             IDbRepository<Contact> baseRepository,
             IDbRepository<Company> companyRepository,
-            IDbRepository<Location> locationRepository)
+            IDbRepository<Location> locationRepository,
+            IGenericRepository<User> userRepository)
         {
             this.BaseRepository = baseRepository;
             this.companyRepository = companyRepository;
             this.locationRepository = locationRepository;
+            this.userRepository = userRepository;
         }
 
         public Contact Create(string phoneNumber, string email, int? addressId)
@@ -48,12 +52,17 @@
             return contact;
         }
 
-        public string SetTo(int holdeId, string holder, int contactId)
+        public string SetTo(string holderId, string holder, int contactId)
         {
             if (holder.ToLower() == "company")
             {
                 var company = this.companyRepository
-                    .GetById(holdeId);
+                    .GetById(int.Parse(holderId));
+
+                if (company == null)
+                {
+                    return $"Error contact not set {holder} not found";
+                }
 
                 company.ContactId = contactId;
                 this.companyRepository.SaveChanges();
@@ -63,7 +72,12 @@
             else if (holder.ToLower() == "location")
             {
                 var location = this.locationRepository
-                       .GetById(holdeId);
+                       .GetById(int.Parse(holderId));
+
+                if (location == null)
+                {
+                    return $"Error contact not set {holder} not found";
+                }
 
                 location.ContactId = contactId;
                 this.locationRepository.SaveChanges();
@@ -72,8 +86,17 @@
             }
             else if (holder.ToLower() == "user")
             {
-                // TODO Implement it
-                throw new NotImplementedException();
+                var user = this.userRepository.GetById(holderId);
+
+                if (user == null)
+                {
+                    return $"Error contact not set {holder} not found";
+                }
+
+                user.ContactId = contactId;
+
+                this.userRepository.SaveChanges();
+                return $"Contact set to {user.UserName}";
             }
 
             return "Error contact not set";
