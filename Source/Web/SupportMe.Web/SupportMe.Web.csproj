@@ -350,6 +350,7 @@
     <Content Include="Scripts\Kendo\kendo.aspnetmvc.min.js.map" />
     <Content Include="Views\Shared\_GlobalMessages.cshtml" />
     <Content Include="Views\Shared\_KendoGridValidationErrorsXKendoTemplate.cshtml" />
+    <Content Include="Views\Shared\_AdminLinksListItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
