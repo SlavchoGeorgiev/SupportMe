@@ -59,7 +59,8 @@
                 this.companyRepository.SaveChanges();
 
                 return $"Contact set to {company.Name}";
-            } else if (holder.ToLower() == "location")
+            }
+            else if (holder.ToLower() == "location")
             {
                 var location = this.locationRepository
                        .GetById(holdeId);
@@ -68,7 +69,8 @@
                 this.locationRepository.SaveChanges();
 
                 return $"Contact set to {location.Name}";
-            } else if (holder.ToLower() == "user")
+            }
+            else if (holder.ToLower() == "user")
             {
                 // TODO Implement it
                 throw new NotImplementedException();

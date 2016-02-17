@@ -208,6 +208,7 @@
     <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\Addresses\AddressViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Companies\CompanyDropDownViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Companies\CompanyViewModel.cs" />

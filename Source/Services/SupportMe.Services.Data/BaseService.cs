@@ -2,7 +2,6 @@
 {
     using System.Linq;
     using Contracts;
-    using SupportMe.Data.Common.Constants;
     using SupportMe.Data.Common.Contracts;
     using SupportMe.Data.Common.Models;
 

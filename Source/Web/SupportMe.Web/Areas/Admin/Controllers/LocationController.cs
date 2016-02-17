@@ -20,7 +20,6 @@
             this.companyService = companyService;
         }
 
-
         [HttpGet]
         public ActionResult Index()
         {
