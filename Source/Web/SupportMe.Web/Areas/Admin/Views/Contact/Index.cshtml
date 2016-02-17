@@ -1,5 +1,6 @@
 ﻿@using Kendo.Mvc.UI
 @using SupportMe.Web.Areas.Admin.Models.Contacts
+@model ContactIndexViewModel
 @{
     ViewBag.Title = "Contacts";
 }
@@ -12,7 +13,9 @@
             <h3 class="panel-title">Contacts</h3>
         </div>
         <div class="panel-body">
-            @(Html.Kendo()
+            <div id="set-massage"></div>
+            <div class="table-responsive">
+                @(Html.Kendo()
                   .Grid<ContactViewModel>()
                   .Name("addresses-grid")
                   .Columns(colums =>
@@ -21,6 +24,25 @@
                       colums.Bound(col => col.Email);
                       colums.Bound(col => col.PhoneNumber);
                       colums.Bound(col => col.AddressName);
+                      if (Model.Selectable)
+                      {
+                          colums.Bound(col => col.Id)
+                              .ClientTemplate(
+                                Ajax.ActionLink(
+                                    $"Set this for {Model.Holder}",
+                                    "SetTo",
+                                    "Contact",
+                                    new { contactId = "#: Id#", id = Model.HolderId, holder = Model.Holder },
+                                    new AjaxOptions()
+                                    {
+                                        HttpMethod = "POST",
+                                        InsertionMode = InsertionMode.Replace,
+                                    },
+                                    new { @class = "btn btn-success", data_ajax_update = "\\#set-massage" })
+                                    .ToString())
+                              .HeaderTemplate($"Set this for {Model.Holder}")
+                              .Width(30);
+                      }
                       colums.Command(comand => comand.Edit());
                       colums.Command(comand => comand.Destroy());
                   })
@@ -53,10 +75,12 @@
                           .Update(update => update.Action("Update", "Contact"))
                           .Destroy(destroy => destroy.Action("Destroy", "Contact"));
                   }))
+            </div>
         </div>
     </div>
 </div>
 
 @section scripts {
     <script src="http://kendo.cdn.telerik.com/2016.1.112/js/jszip.min.js"></script>
+    @Scripts.Render("~/bundles/jqueryuno")
 }

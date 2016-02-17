@@ -7,5 +7,7 @@
         Contact Create(string phoneNumber, string email, int? addressId);
 
         Contact Update(int id, string phoneNumber, string email, int? addressId);
+
+        string SetTo(int holdeId, string holder, int contactId);
     }
 }

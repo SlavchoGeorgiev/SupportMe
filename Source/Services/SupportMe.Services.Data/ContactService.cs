@@ -1,13 +1,19 @@
 ﻿namespace SupportMe.Services.Data
 {
+    using System;
     using Contracts;
     using SupportMe.Data.Common.Contracts;
     using SupportMe.Data.Models;
 
     public class ContactService : BaseService<Contact>, IContactService
     {
-        public ContactService(IDbRepository<Contact> baseRepository)
+        private readonly IDbRepository<Company> companyRepository;
+
+        public ContactService(
+            IDbRepository<Contact> baseRepository,
+            IDbRepository<Company> companyRepository)
         {
+            this.companyRepository = companyRepository;
             this.BaseRepository = baseRepository;
         }
 
@@ -35,6 +41,30 @@
             this.BaseRepository.SaveChanges();
 
             return contact;
+        }
+
+        public string SetTo(int holdeId, string holder, int contactId)
+        {
+            if (holder.ToLower() == "company")
+            {
+                var company = this.companyRepository
+                    .GetById(holdeId);
+
+                company.ContactId = contactId;
+                this.companyRepository.SaveChanges();
+
+                return $"Contact set to {company.Name}";
+            } else if (holder.ToLower() == "location")
+            {
+                // TODO Implement it
+                throw new NotImplementedException();
+            } else if (holder.ToLower() == "user")
+            {
+                // TODO Implement it
+                throw new NotImplementedException();
+            }
+
+            return "Error contact not set";
         }
     }
 }

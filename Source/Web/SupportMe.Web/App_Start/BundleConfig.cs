@@ -10,6 +10,9 @@
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/Kendo/jquery.min.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryuno").Include(
+                        "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/Kendo/kendo.all.min.js",
                         "~/Scripts/Kendo/kendo.aspnetmvc.min.js"));

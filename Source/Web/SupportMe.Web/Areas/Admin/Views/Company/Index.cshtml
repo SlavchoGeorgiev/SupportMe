@@ -20,6 +20,7 @@
                       colums.Bound(col => col.Id);
                       colums.Bound(col => col.Name);
                       colums.Bound(col => col.ContactId);
+                      colums.Bound(col => col.Id).ClientTemplate("<a href='/Admin/Contact/Index/#: Id#/Company' class='btn btn-primary'>Change company contact</a>").HeaderTemplate("Set company contact");
                       colums.Command(comand => comand.Edit());
                       colums.Command(comand => comand.Destroy());
                   })

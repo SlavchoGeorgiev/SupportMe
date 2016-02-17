@@ -11,7 +11,10 @@
 
     public class ContactController : AdministrationController
     {
+        private readonly string[] contactHolders = new[] { "Company", "Location", "User" };
+
         private IContactService contactService;
+
         private IAddressService addressService;
 
         public ContactController(IContactService contactService, IAddressService addressService)
@@ -21,8 +24,16 @@
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int? id, string holder)
         {
+            var model = new ContactIndexViewModel() { Selectable = false };
+            if (id != null && this.contactHolders.Contains(holder))
+            {
+                model.Selectable = true;
+                model.Holder = holder;
+                model.HolderId = (int)id;
+            }
+
             this.ViewBag.Addresses = this.addressService
                 .GetAll()
                 .Select(a => new
@@ -31,13 +42,20 @@
                     Text = a.Country + ", " + a.City + ", " + a.Street
                 })
                 .ToList();
-                //.Select(a => new SelectListItem()
-                //{
-                //    Value = a.Value,
-                //    Text = a.Text
-                //});
 
-            return this.View();
+            return this.View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SetTo(int? id, string holder, int contactId)
+        {
+            string massage = "Invalid request";
+            if (id != null && this.contactHolders.Contains(holder))
+            {
+                massage = this.contactService.SetTo((int)id, holder, contactId);
+            }
+
+            return this.PartialView("_SetMassage", massage);
         }
 
         [HttpPost]
