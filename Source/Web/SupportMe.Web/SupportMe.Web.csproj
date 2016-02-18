@@ -217,6 +217,9 @@
     <Compile Include="Areas\Admin\Models\Locations\LocationDropDownViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Locations\LocationViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Support\Controllers\SupportController.cs" />
+    <Compile Include="Areas\Support\Controllers\TicketController.cs" />
+    <Compile Include="Areas\Support\SupportAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -289,6 +292,10 @@
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\LocationViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\UserViewModel.cshtml" />
+    <Content Include="Areas\Support\Views\web.config" />
+    <Content Include="Areas\Support\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Support\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\Support\Views\Ticket\Create.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -356,10 +363,12 @@
     <Content Include="Views\Shared\_GlobalMessages.cshtml" />
     <Content Include="Views\Shared\_KendoGridValidationErrorsXKendoTemplate.cshtml" />
     <Content Include="Views\Shared\_AdminLinksListItems.cshtml" />
+    <Content Include="Views\Shared\_SupportLinksListItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\DisplayTemplates\" />
+    <Folder Include="Areas\Support\Models\" />
     <Folder Include="Content\Kendo\Bootstrap\" />
     <Folder Include="Content\Kendo\fonts\" />
     <Folder Include="Content\Kendo\images\" />

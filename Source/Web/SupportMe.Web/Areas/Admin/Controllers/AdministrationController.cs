@@ -6,7 +6,7 @@
     using Web.Controllers;
 
     [Authorize(Roles = UserRole.Admin)]
-    public class AdministrationController : BaseController
+    public abstract class AdministrationController : BaseController
     {
         [HttpPost]
         public ActionResult ExportToExcel(string contentType, string base64, string fileName)
