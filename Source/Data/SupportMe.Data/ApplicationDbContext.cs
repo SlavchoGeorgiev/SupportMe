@@ -27,6 +27,10 @@
 
         public IDbSet<Team> Teams { get; set; }
 
+        public IDbSet<Ticket> Tickets { get; set; }
+
+        public IDbSet<TicketMassage> TicketMassages { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

@@ -1,7 +1,6 @@
 ﻿namespace SupportMe.Services.Data.Contracts
 {
     using System.Linq;
-    using Microsoft.AspNet.Identity;
     using Results;
     using SupportMe.Data.Models;
 

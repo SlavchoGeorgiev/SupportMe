@@ -52,8 +52,8 @@
             user.Email = email;
             user.LocationId = locationId;
 
-            result.result = this.manager.Update(user);
-            result.user = user;
+            result.Result = this.manager.Update(user);
+            result.User = user;
 
             return result;
         }

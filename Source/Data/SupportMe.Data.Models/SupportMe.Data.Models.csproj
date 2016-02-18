@@ -64,6 +64,11 @@
     <Compile Include="Contact.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Team.cs" />
+    <Compile Include="Ticket.cs" />
+    <Compile Include="TicketMassage.cs" />
+    <Compile Include="TicketPriority.cs" />
+    <Compile Include="TicketState.cs" />
+    <Compile Include="TicketType.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

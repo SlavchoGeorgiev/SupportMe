@@ -2,24 +2,14 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using Data.Models;
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Microsoft.AspNet.Identity;
     using Models.Users;
-    using Services.Data.Contracts;
     using Services.Data.Results;
 
     public class UserController : AdministrationController
     {
-        private readonly IUserService userService;
-
-        public UserController(IUserService userService)
-        {
-            this.userService = userService;
-        }
-
         [HttpGet]
         public ActionResult Index()
         {
@@ -29,7 +19,7 @@
         [HttpPost]
         public ActionResult Read([DataSourceRequest] DataSourceRequest request)
         {
-            var companies = this.userService
+            var companies = this.UserService
                 .GetAll()
                 .To<UserViewModel>();
 
@@ -42,7 +32,7 @@
         {
             if (this.ModelState.IsValid && model != null)
             {
-                UpdateUserResult result = this.userService.Update(
+                UpdateUserResult result = this.UserService.Update(
                     model.Id,
                     model.FirstName,
                     model.LastName,
@@ -50,16 +40,16 @@
                     model.Email,
                     int.Parse(model.LocationId));
 
-                if (result.result.Succeeded)
+                if (result.Result.Succeeded)
                 {
-                    model = this.userService
-                        .GetById(result.user.Id)
+                    model = this.UserService
+                        .GetById(result.User.Id)
                         .To<UserViewModel>()
                         .FirstOrDefault();
                 }
                 else
                 {
-                    foreach (var error in result.result.Errors)
+                    foreach (var error in result.Result.Errors)
                     {
                         this.ModelState.AddModelError(string.Empty, error);
                     }
@@ -72,7 +62,7 @@
         [HttpPost]
         public ActionResult Destroy([DataSourceRequest] DataSourceRequest request, UserViewModel model)
         {
-            this.userService.Delete(model.Id);
+            this.UserService.Delete(model.Id);
 
             return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }

@@ -12,7 +12,7 @@
     {
         public ICacheService Cache { get; set; }
 
-        public IUserService UsersServices { get; set; }
+        public IUserService UserService { get; set; }
 
         protected User CurrentUser { get; set; }
 
@@ -26,7 +26,7 @@
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            this.CurrentUser = this.UsersServices.GetByUsername(filterContext.HttpContext.User.Identity.Name).FirstOrDefault();
+            this.CurrentUser = this.UserService.GetByUsername(filterContext.HttpContext.User.Identity.Name).FirstOrDefault();
 
             base.OnActionExecuting(filterContext);
         }

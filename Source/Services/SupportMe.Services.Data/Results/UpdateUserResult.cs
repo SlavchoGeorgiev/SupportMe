@@ -5,8 +5,8 @@
 
     public class UpdateUserResult
     {
-        public User user { get; set; }
+        public User User { get; set; }
 
-        public IdentityResult result { get; set; }
+        public IdentityResult Result { get; set; }
     }
 }
