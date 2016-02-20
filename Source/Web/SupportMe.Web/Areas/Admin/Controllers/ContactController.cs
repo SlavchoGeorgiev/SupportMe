@@ -6,8 +6,8 @@
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Models.Contacts;
     using Services.Data.Contracts;
+    using ViewModels.Contacts;
 
     public class ContactController : AdministrationController
     {

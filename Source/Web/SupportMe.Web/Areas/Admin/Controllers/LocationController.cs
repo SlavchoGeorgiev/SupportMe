@@ -5,8 +5,8 @@
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Models.Locations;
     using Services.Data.Contracts;
+    using ViewModels.Locations;
 
     public class LocationController : AdministrationController
     {

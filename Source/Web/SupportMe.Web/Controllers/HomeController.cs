@@ -11,7 +11,7 @@
 
         public ActionResult Index()
         {
-            //this.TempData[GlobalMessages.Success] = $"Hello {this.CurrentUser.FirstName} {this.CurrentUser.LastName} {this.CurrentUser.UserName}";
+            // this.TempData[GlobalMessages.Success] = $"Hello {this.CurrentUser.FirstName} {this.CurrentUser.LastName} {this.CurrentUser.UserName}";
             return this.View();
         }
     }

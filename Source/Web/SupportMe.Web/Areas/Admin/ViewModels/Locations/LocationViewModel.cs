@@ -1,13 +1,13 @@
-﻿namespace SupportMe.Web.Areas.Admin.Models.Locations
+﻿namespace SupportMe.Web.Areas.Admin.ViewModels.Locations
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web.Mvc;
     using AutoMapper;
-    using Contacts;
     using Data.Models;
     using Infrastructure.Mapping;
+    using ViewModels.Contacts;
 
     public class LocationViewModel : IMapFrom<Location>, IHaveCustomMappings
     {

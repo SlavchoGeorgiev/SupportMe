@@ -1,4 +1,4 @@
-﻿namespace SupportMe.Web.Areas.Admin.Models.Contacts
+﻿namespace SupportMe.Web.Areas.Admin.ViewModels.Contacts
 {
     public class ContactIndexViewModel
     {

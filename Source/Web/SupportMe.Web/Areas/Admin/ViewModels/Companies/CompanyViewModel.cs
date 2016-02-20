@@ -1,4 +1,4 @@
-﻿namespace SupportMe.Web.Areas.Admin.Models.Companies
+﻿namespace SupportMe.Web.Areas.Admin.ViewModels.Companies
 {
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;

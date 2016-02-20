@@ -5,8 +5,8 @@
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Models.Addresses;
     using Services.Data.Contracts;
+    using ViewModels.Addresses;
 
     public class AddressController : AdministrationController
     {

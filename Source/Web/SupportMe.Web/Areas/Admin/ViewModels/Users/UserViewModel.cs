@@ -1,4 +1,4 @@
-﻿namespace SupportMe.Web.Areas.Admin.Models.Users
+﻿namespace SupportMe.Web.Areas.Admin.ViewModels.Users
 {
     using System.ComponentModel.DataAnnotations;
     using AutoMapper;

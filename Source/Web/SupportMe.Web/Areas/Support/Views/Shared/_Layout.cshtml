@@ -6,8 +6,8 @@
     <section class="col-md-10">
         @RenderBody()
     </section>
-    <section class="col-md-2">
-        @*Render Action with tickets*@
-    </section>
+    <aside class="col-md-2">
+        @RenderSection("support-sidebar", required: false)
+    </aside>
 </div>
 

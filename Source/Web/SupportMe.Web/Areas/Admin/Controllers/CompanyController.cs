@@ -5,8 +5,8 @@
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Models.Companies;
     using Services.Data.Contracts;
+    using ViewModels.Companies;
 
     public class CompanyController : AdministrationController
     {

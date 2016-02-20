@@ -1,4 +1,4 @@
-﻿namespace SupportMe.Web.Areas.Admin.Models.Addresses
+﻿namespace SupportMe.Web.Areas.Admin.ViewModels.Addresses
 {
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;

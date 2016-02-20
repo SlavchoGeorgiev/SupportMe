@@ -1,12 +1,10 @@
-﻿namespace SupportMe.Web.Areas.Admin.Models.Companies
+﻿namespace SupportMe.Web.Areas.Admin.ViewModels.Locations
 {
-    using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class CompanyDropDownViewModel : IMapFrom<Company>, IHaveCustomMappings
+    public class LocationDropDownViewModel : IMapFrom<Location>, IHaveCustomMappings
     {
         public string Id { get; set; }
 
@@ -14,7 +12,7 @@
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Company, CompanyDropDownViewModel>()
+            configuration.CreateMap<Location, LocationDropDownViewModel>()
                 .ForMember(vm => vm.Id, opts => opts.MapFrom(dbm => dbm.Id.ToString()));
         }
     }

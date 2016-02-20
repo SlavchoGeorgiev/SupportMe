@@ -5,8 +5,8 @@
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
-    using Models.Users;
     using Services.Data.Results;
+    using ViewModels.Users;
 
     public class UserController : AdministrationController
     {

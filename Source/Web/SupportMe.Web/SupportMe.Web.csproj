@@ -209,14 +209,14 @@
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
-    <Compile Include="Areas\Admin\Models\Addresses\AddressViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Companies\CompanyDropDownViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Companies\CompanyViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Contacts\ContactViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Contacts\ContactIndexViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Locations\LocationDropDownViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Locations\LocationViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Users\UserViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Addresses\AddressViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Companies\CompanyDropDownViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Companies\CompanyViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Contacts\ContactViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Contacts\ContactIndexViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Locations\LocationDropDownViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Locations\LocationViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Users\UserViewModel.cs" />
     <Compile Include="Areas\Support\Controllers\SupportController.cs" />
     <Compile Include="Areas\Support\Controllers\TicketController.cs" />
     <Compile Include="Areas\Support\SupportAreaRegistration.cs" />
@@ -261,6 +261,7 @@
     <Content Include="Content\Kendo\kendo.common.min.css" />
     <Content Include="Content\Kendo\kendo.supportme.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -296,6 +297,10 @@
     <Content Include="Areas\Support\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Support\Views\Shared\_Layout.cshtml" />
     <None Include="Areas\Support\Views\Ticket\Create.cshtml" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
@@ -368,7 +373,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\DisplayTemplates\" />
-    <Folder Include="Areas\Support\Models\" />
+    <Folder Include="Areas\Support\ViewModels\" />
     <Folder Include="Content\Kendo\Bootstrap\" />
     <Folder Include="Content\Kendo\fonts\" />
     <Folder Include="Content\Kendo\images\" />
