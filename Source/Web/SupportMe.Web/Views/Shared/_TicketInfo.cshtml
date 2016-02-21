@@ -1,0 +1,44 @@
+﻿@model SupportMe.Web.ViewModels.Ticket.TicketInfoViewModel
+
+<div class="row">
+    <div class="col-md-4">
+        <dl class="dl-horizontal well">
+            <dt>Priority: </dt>
+            <dd>
+                @Model.Priority
+            </dd>
+            <dt>State: </dt>
+            <dd>
+                @Model.State
+            </dd>
+            <dt>Type: </dt>
+            <dd>
+                @Model.Type
+            </dd>
+            <dt>Location: </dt>
+            <dd>
+                @Model.Location
+            </dd>
+        </dl>
+    </div>
+    <div class="col-md-8">
+        <div class="well">
+            <h2 class="text-center">@Model.Title</h2>
+            <small><i>Created on:</i> @Model.CreatedOn</small><small>by <em>@Model.Author</em></small>
+        </div>
+    </div>
+    <div class="col-md-12">
+        @Ajax.ActionLink(
+            "Edit",
+            "Edit",
+            new { id = Model.Id },
+            new AjaxOptions
+            {
+                UpdateTargetId = "ticket-info",
+                HttpMethod = "GET",
+                InsertionMode = InsertionMode.Replace,
+            },
+            new { @class = "btn-lg btn-primary btn-block text-center" })
+    </div>
+</div>
+

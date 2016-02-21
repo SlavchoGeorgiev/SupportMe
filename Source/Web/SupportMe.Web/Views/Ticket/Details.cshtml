@@ -1,7 +1,14 @@
-﻿@model dynamic
+﻿@model int
 
 @{
     ViewBag.Title = "title";
 }
 
 <h2>Ticket Details</h2>
+<div id="ticket-info">
+    @Html.Action("TicketInfo", "Ticket", new { id = Model, area = string.Empty })
+</div>
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryuno")
+}

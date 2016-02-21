@@ -1,0 +1,23 @@
+﻿@model SupportMe.Web.ViewModels.Ticket.TicketInfoViewModel
+@using (Ajax.BeginForm(
+    actionName: "Edit",
+    controllerName: "Ticket",
+    ajaxOptions: new AjaxOptions()
+    {
+        UpdateTargetId = "ticket-info",
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace,
+    },
+    routeValues: new { area = string.Empty, id = Model.Id },
+    htmlAttributes: new { @class = "form-horizontal well" }
+    ))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorFor(m => m)
+    <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+            <button type="reset" class="btn btn-default">Cancel</button>
+            <input type="submit" class="btn btn-primary" value="Update">
+        </div>
+    </div>
+}

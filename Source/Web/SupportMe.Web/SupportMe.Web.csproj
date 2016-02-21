@@ -258,6 +258,7 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Areas\Support\ViewModels\Ticket\TicketInputModel.cs" />
+    <Compile Include="ViewModels\Ticket\TicketInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -389,6 +390,9 @@
     <Content Include="Views\Shared\EditorTemplates\BootstrapTextArea.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\BootstrapDecimalNumber.cshtml" />
     <Content Include="Views\Ticket\Details.cshtml" />
+    <Content Include="Views\Shared\_TicketInfo.cshtml" />
+    <Content Include="Views\Shared\_TicketEditInfo.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TicketInfoViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -401,7 +405,6 @@
     <Folder Include="Scripts\Kendo\cultures\" />
     <Folder Include="Scripts\Kendo\messages\" />
     <Folder Include="ViewModels\Home\" />
-    <Folder Include="ViewModels\Ticket\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>

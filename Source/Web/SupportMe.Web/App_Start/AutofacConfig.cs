@@ -83,6 +83,10 @@
                 .AssignableTo<BaseController>()
                 .PropertiesAutowired()
                 .InstancePerRequest();
+
+            builder.RegisterType<TicketController>()
+                .PropertiesAutowired()
+                .InstancePerDependency();
         }
     }
 }
