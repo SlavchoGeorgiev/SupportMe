@@ -40,14 +40,14 @@
         [HttpPost]
         public ActionResult Update([DataSourceRequest]DataSourceRequest request, TicketViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (!this.ModelState.IsValid)
             {
                 string fieldName = "CreatedOn";
-                var m = ViewData.ModelState[fieldName];
+                var m = this.ViewData.ModelState[fieldName];
 
                 if (m != null && m.Errors.Count > 0)
                 {
-                    ViewData.ModelState.Remove(fieldName);
+                    this.ViewData.ModelState.Remove(fieldName);
                 }
             }
 

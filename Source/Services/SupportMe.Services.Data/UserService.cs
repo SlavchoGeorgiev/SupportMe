@@ -1,8 +1,11 @@
 ﻿namespace SupportMe.Services.Data
 {
+    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
     using Contracts;
     using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Results;
     using SupportMe.Data.Common.Contracts;
     using SupportMe.Data.Models;
@@ -13,12 +16,16 @@
 
         private readonly UserManager<User> manager;
 
+        private readonly DbContext context;
+
         public UserService(
             IGenericRepository<User> usersRepository,
-            UserManager<User> manager)
+            UserManager<User> manager,
+            DbContext context)
         {
             this.usersRepository = usersRepository;
             this.manager = manager;
+            this.context = context;
         }
 
         public IQueryable<User> GetByUsername(string username)
@@ -64,6 +71,30 @@
             this.usersRepository.Delete(model);
             this.usersRepository.SaveChanges();
             return model;
+        }
+
+        public IQueryable<IdentityRole> GetAllRoles()
+        {
+            var roleStore = new RoleStore<IdentityRole>(this.context);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+            List<IdentityRole> roles = roleManager.Roles.ToList();
+
+            return roles.AsQueryable();
+        }
+
+        public IEnumerable<string> GetUserRoles(string userId)
+        {
+            return this.manager.GetRoles<User, string>(userId);
+        }
+
+        public void UpdateRoles(string id, IEnumerable<string> roles)
+        {
+            this.manager.RemoveFromRoles(id, this.GetUserRoles(id).ToArray());
+            if (roles != null || roles.Any())
+            {
+                this.manager.AddToRoles(id, roles.ToArray());
+            }
         }
     }
 }

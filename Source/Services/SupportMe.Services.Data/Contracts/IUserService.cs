@@ -1,6 +1,8 @@
 ﻿namespace SupportMe.Services.Data.Contracts
 {
+    using System.Collections.Generic;
     using System.Linq;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Results;
     using SupportMe.Data.Models;
 
@@ -21,5 +23,11 @@
             int locationId);
 
         User Delete(string id);
+
+        IQueryable<IdentityRole> GetAllRoles();
+
+        IEnumerable<string> GetUserRoles(string userId);
+
+        void UpdateRoles(string id, IEnumerable<string> roles);
     }
 }

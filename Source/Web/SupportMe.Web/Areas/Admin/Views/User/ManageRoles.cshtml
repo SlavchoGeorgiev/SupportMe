@@ -1,0 +1,50 @@
+﻿@model SupportMe.Web.Areas.Admin.ViewModels.Users.ManageRoleInputModel
+
+@{
+    ViewBag.Title = $"Select role for User: {Model.User.UserName}";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2 class="text-center well">@ViewBag.Title</h2>
+        <dl class="dl-horizontal well">
+            <dt>First name: </dt>
+            <dd>@Model.User.FirstName</dd>
+            <dt>last name: </dt>
+            <dd>@Model.User.LastName</dd>
+            <dt>Location name </dt>
+            <dd>@Model.User.LocationName</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-horizontal well" method="post">
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend>Select user roles</legend>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SelectedRoles, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @(Html.Kendo().MultiSelectFor(m => m.SelectedRoles)
+                              .Placeholder($"Select roles for user {Model.User.UserName}...")
+                              .BindTo(Model.Roles.Select(r => r.Name).ToList())
+                              .Value(Model.SelectedRoles))
+                        @Html.ValidationMessageFor(m => m.SelectedRoles, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <input type="submit" class="btn btn-primary" value="Update">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

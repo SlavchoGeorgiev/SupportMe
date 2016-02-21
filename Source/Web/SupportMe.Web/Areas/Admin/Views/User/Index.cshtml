@@ -9,7 +9,9 @@
             <h3 class="panel-title">@ViewBag.Title</h3>
         </div>
         <div class="panel-body">
-            @(Html.Kendo()
+
+            <div class="table-responsive">
+                @(Html.Kendo()
                   .Grid<UserViewModel>()
                   .Name("my-kendo-grid")
                   .Columns(colums =>
@@ -23,6 +25,9 @@
                       colums.Bound(col => col.Id)
                           .ClientTemplate("<a href='/Admin/Contact/Index/#: Id#/User' class='btn btn-primary'>Set</a>")
                           .HeaderTemplate("Set user contact");
+                      colums.Bound(col => col.Id)
+                          .ClientTemplate("<a href='/Admin/User/ManageRoles/#: Id#' class='btn btn-primary'>Change</a>")
+                          .HeaderTemplate("Manage roles");
                       colums.Command(comand => comand.Edit());
                       colums.Command(comand => comand.Destroy());
                   })
@@ -54,6 +59,7 @@
                           .Destroy(destroy => destroy.Action("Destroy", "User"))
                           .Events(events => events.Error("onGridValidationError"));
                   }))
+            </div>
         </div>
     </div>
 </div>

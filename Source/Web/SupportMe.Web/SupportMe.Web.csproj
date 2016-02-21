@@ -218,6 +218,9 @@
     <Compile Include="Areas\Admin\ViewModels\Locations\LocationDropDownViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Locations\LocationViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Tickets\TicketViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Users\ManageRoleInputModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Users\UserShortInfoViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Users\UsersRoleSelectViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users\UserViewModel.cs" />
     <Compile Include="Areas\Support\Controllers\SupportController.cs" />
     <Compile Include="Areas\Support\Controllers\TicketController.cs" />
@@ -308,6 +311,7 @@
     <Content Include="Areas\Support\Views\Shared\EditorTemplates\TicketMassageInputModel.cshtml" />
     <Content Include="Areas\Admin\Views\Ticket\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TicketViewModel.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ManageRoles.cshtml" />
     <None Include="Areas\Support\Views\Ticket\Create.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />

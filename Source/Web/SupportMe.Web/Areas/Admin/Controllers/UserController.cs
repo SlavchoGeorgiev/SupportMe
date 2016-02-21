@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Common.Constants;
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
@@ -14,6 +15,47 @@
         public ActionResult Index()
         {
             return this.View();
+        }
+
+        [HttpGet]
+        public ActionResult ManageRoles(string id)
+        {
+            var model = new ManageRoleInputModel();
+            model.User = this.UserService.GetById(id).To<UserShortInfoViewModel>().FirstOrDefault();
+            model.SelectedRoles = this.UserService.GetUserRoles(id);
+            model.Roles = this.Cache.Get(
+                "UserRoles",
+                () => this.UserService.GetAllRoles().To<UsersRoleSelectViewModel>().ToList(),
+                10 * 60 * 60);
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ManageRoles(string id, ManageRoleInputModel model)
+        {
+            if (id == null)
+            {
+                this.TempData[GlobalMessages.Danger] = "User id is required!";
+                return this.RedirectToAction("Index", "Home", new { area = string.Empty });
+            }
+
+            if (this.ModelState.IsValid && model != null)
+            {
+                this.UserService.UpdateRoles(id, model.SelectedRoles);
+                this.TempData[GlobalMessages.Success] =
+                    $"User roles updated with {string.Join(", ", model.SelectedRoles)}!";
+                return this.RedirectToAction("Index");
+            }
+
+            model.User = this.UserService.GetById(id).To<UserShortInfoViewModel>().FirstOrDefault();
+            model.SelectedRoles = this.UserService.GetUserRoles(id);
+            model.Roles = this.Cache.Get(
+                "UserRoles",
+                () => this.UserService.GetAllRoles().To<UsersRoleSelectViewModel>().ToList(),
+                10 * 60 * 60);
+
+            return this.View(model);
         }
 
         [HttpPost]

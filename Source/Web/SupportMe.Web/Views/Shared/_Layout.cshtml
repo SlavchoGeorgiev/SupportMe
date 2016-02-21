@@ -23,8 +23,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li> 
-                        @Html.ActionLink("Home", "Index", "Home", new {area = string.Empty}, null)
+                    <li>
+                        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
                     </li>
                     @if (User.IsInRole(UserRole.Support) || User.IsInRole(UserRole.Admin))
                     {
