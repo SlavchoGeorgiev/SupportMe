@@ -1,0 +1,59 @@
+﻿@using SupportMe.Common.Constants
+@using SupportMe.Data.Models
+@model SupportMe.Web.Areas.Admin.ViewModels.Tickets.TicketViewModel
+
+<div class="errors"></div>
+
+@Html.HiddenFor(m => m.Id)
+
+<input type="hidden" value="@DateTime.Now" name="CreatedOn"/>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.Title)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(m => m.Title)
+    @Html.ValidationMessageFor(m => m.Title)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.Priority)
+</div>
+<div class="editor-field">
+    @Html.Kendo().DropDownListFor(m => m.Priority).BindTo(Enum.GetNames(typeof(TicketPriority)).ToList())
+    @Html.ValidationMessageFor(m => m.Priority)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.State)
+</div>
+<div class="editor-field">
+    @Html.Kendo().DropDownListFor(m => m.State).BindTo(Enum.GetNames(typeof(TicketState)).ToList())
+    @Html.ValidationMessageFor(m => m.State)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.Type)
+</div>
+<div class="editor-field">
+    @Html.Kendo().DropDownListFor(m => m.Type).BindTo(Enum.GetNames(typeof(TicketType)).ToList())
+    @Html.ValidationMessageFor(m => m.Type)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(m => m.LocationId, new { @class = "col-md-2 control-label" })
+</div>
+<div class="editor-field">
+    @(Html.Kendo()
+              .DropDownListFor(m => m.LocationId)
+              .DataValueField("Id")
+              .DataTextField("Name")
+              .DataSource(data =>
+              {
+                  data.Read("Read", "Location", new { area = MvcArea.Admin });
+              })
+              .AutoBind(false))
+    @Html.ValidationMessageFor(m => m.LocationId, "", new { @class = "text-danger" })
+</div>
+
+@Html.Partial("_KendoGridValidationErrorsXKendoTemplate")

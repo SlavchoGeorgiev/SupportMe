@@ -17,7 +17,8 @@
             context.MapRoute(
                 "Support_default",
                 "Support/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional });
+                new { action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "SupportMe.Web.Areas.Support.Controllers" });
         }
     }
 }

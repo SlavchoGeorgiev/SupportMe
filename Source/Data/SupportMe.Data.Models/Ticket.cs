@@ -28,6 +28,7 @@
 
         public virtual Location Location { get; set; }
 
+        [Required]
         public string AuthorId { get; set; }
 
         [ForeignKey("AuthorId")]

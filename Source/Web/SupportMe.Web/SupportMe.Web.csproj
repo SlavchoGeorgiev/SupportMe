@@ -208,6 +208,7 @@
     <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TicketController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Addresses\AddressViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Companies\CompanyDropDownViewModel.cs" />
@@ -216,15 +217,20 @@
     <Compile Include="Areas\Admin\ViewModels\Contacts\ContactIndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Locations\LocationDropDownViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Locations\LocationViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Tickets\TicketViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users\UserViewModel.cs" />
     <Compile Include="Areas\Support\Controllers\SupportController.cs" />
     <Compile Include="Areas\Support\Controllers\TicketController.cs" />
     <Compile Include="Areas\Support\SupportAreaRegistration.cs" />
+    <Compile Include="Areas\Support\ViewModels\TicketMassage\TicketMassageInputModel.cs" />
+    <Compile Include="Areas\Support\ViewModels\Ticket\CreateTicketViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -237,6 +243,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Location\LocationDropDownViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\FactorViewModel.cs" />
@@ -247,6 +254,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Areas\Support\ViewModels\Ticket\TicketInputModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -296,6 +304,10 @@
     <Content Include="Areas\Support\Views\web.config" />
     <Content Include="Areas\Support\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Support\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Support\Views\Shared\EditorTemplates\TicketInputModel.cshtml" />
+    <Content Include="Areas\Support\Views\Shared\EditorTemplates\TicketMassageInputModel.cshtml" />
+    <Content Include="Areas\Admin\Views\Ticket\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TicketViewModel.cshtml" />
     <None Include="Areas\Support\Views\Ticket\Create.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -369,11 +381,15 @@
     <Content Include="Views\Shared\_KendoGridValidationErrorsXKendoTemplate.cshtml" />
     <Content Include="Views\Shared\_AdminLinksListItems.cshtml" />
     <Content Include="Views\Shared\_SupportLinksListItems.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\BootstrapTextBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\BootstrapTextArea.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\BootstrapDecimalNumber.cshtml" />
+    <Content Include="Views\Ticket\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\DisplayTemplates\" />
-    <Folder Include="Areas\Support\ViewModels\" />
+    <Folder Include="Areas\Support\Views\Shared\DisplayTemplates\" />
     <Folder Include="Content\Kendo\Bootstrap\" />
     <Folder Include="Content\Kendo\fonts\" />
     <Folder Include="Content\Kendo\images\" />
@@ -381,6 +397,7 @@
     <Folder Include="Scripts\Kendo\cultures\" />
     <Folder Include="Scripts\Kendo\messages\" />
     <Folder Include="ViewModels\Home\" />
+    <Folder Include="ViewModels\Ticket\" />
     <Folder Include="Views\Base\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>

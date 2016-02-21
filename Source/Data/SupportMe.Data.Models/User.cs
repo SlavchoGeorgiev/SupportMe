@@ -12,9 +12,12 @@
     {
         private ICollection<Team> teams;
 
+        private ICollection<Ticket> ticket;
+
         public User()
         {
             this.teams = new HashSet<Team>();
+            this.ticket = new HashSet<Ticket>();
         }
 
         [MaxLength(80)]
@@ -32,6 +35,12 @@
 
         [ForeignKey("LocationId")]
         public Location Location { get; set; }
+
+        public virtual ICollection<Ticket> Tickets
+        {
+            get { return this.ticket; }
+            set { this.ticket = value; }
+        }
 
         public virtual ICollection<Team> Teams
         {

@@ -1,5 +1,4 @@
-﻿
-namespace SupportMe.Data.Models
+﻿namespace SupportMe.Data.Models
 {
     public enum TicketType
     {

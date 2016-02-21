@@ -1,0 +1,64 @@
+﻿@using SupportMe.Web.Areas.Admin.ViewModels.Tickets
+    @{
+        ViewBag.Title = "Tickets";
+    }
+    @Html.Partial("_ManagmentHeader")
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">@ViewBag.Title</h3>
+            </div>
+            <div class="panel-body">
+                @(Html.Kendo()
+                  .Grid<TicketViewModel>()
+                  .Name("my-kendo-grid")
+                  .Columns(colums =>
+                  {
+                      colums.Bound(col => col.Id);
+                      colums.Bound(col => col.Title);
+                      colums.Bound(col => col.State);
+                      colums.Bound(col => col.Priority);
+                      colums.Bound(col => col.Type);
+                      colums.Bound(col => col.Location);
+                      colums.Bound(col => col.Author);
+                      colums.Bound(col => col.CreatedOn);
+                      colums.Command(comand => comand.Edit());
+                      colums.Command(comand => comand.Destroy());
+                  })
+                  .ColumnMenu()
+
+                  .ToolBar(tools =>
+                  {
+                      tools.Excel().Text("Export Tickets to Excel");
+                  })
+                  .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                  .Pageable(page => page.Refresh(true))
+                  .Sortable()
+                  .Filterable()
+                  .Groupable()
+                  .Excel(excel =>
+                  {
+                      excel.AllPages(true);
+                      excel.FileName("Tickets_" + DateTime.Now.ToString() + ".xlsx");
+                      excel.Filterable(true);
+                      excel.ProxyURL(Url.Action("ExportToExcel", "Ticket"));
+                  })
+                  .DataSource(datasource =>
+                  {
+                      datasource
+                          .Ajax()
+                          .PageSize(10)
+                          .Model(m => m.Id(model => model.Id))
+                          .Read(read => read.Action("Read", "Ticket"))
+                          .Update(update => update.Action("Update", "Ticket"))
+                          .Destroy(destroy => destroy.Action("Destroy", "Ticket"))
+                          .Events(events => events.Error("onGridValidationError"));
+                  }))
+            </div>
+        </div>
+    </div>
+
+    @section scripts {
+        <script src="http://kendo.cdn.telerik.com/2016.1.112/js/jszip.min.js"></script>
+        @Scripts.Render("~/bundles/pagespecific");
+    }

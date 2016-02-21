@@ -29,7 +29,7 @@
                   .ToolBar(tools =>
                   {
                       tools.Create().Text("Add new Location");
-                      tools.Excel().Text("Export Addresees to Excel");
+                      tools.Excel().Text("Export Locations to Excel");
                   })
                   .Editable(edit => edit.Mode(GridEditMode.PopUp))
                   .Pageable(page => page.Refresh(true))
@@ -39,9 +39,9 @@
                   .Excel(excel =>
                   {
                       excel.AllPages(true);
-                      excel.FileName("Addresses_" + DateTime.Now.ToString() + ".xlsx");
+                      excel.FileName("Locations_" + DateTime.Now.ToString() + ".xlsx");
                       excel.Filterable(true);
-                      excel.ProxyURL(Url.Action("ExportToExcel", "Address"));
+                      excel.ProxyURL(Url.Action("ExportToExcel", "Location"));
                   })
                   .DataSource(datasource =>
                   {
