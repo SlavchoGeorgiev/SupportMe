@@ -19,9 +19,13 @@
         {
             var states = this.statisticsService.TicketsCountByState();
             var model = new List<TicketStatePieViewModel>();
-            model.Add(new TicketStatePieViewModel("Open", states.Open / (decimal)states.Total * 100));
-            model.Add(new TicketStatePieViewModel("On Hold", states.Hold / (decimal)states.Total * 100));
-            model.Add(new TicketStatePieViewModel("Close", states.Closed / (decimal)states.Total * 100));
+
+            if (states.Total != 0)
+            {
+                model.Add(new TicketStatePieViewModel("Open", states.Open / (decimal)states.Total * 100));
+                model.Add(new TicketStatePieViewModel("On Hold", states.Hold / (decimal)states.Total * 100));
+                model.Add(new TicketStatePieViewModel("Close", states.Closed / (decimal)states.Total * 100));
+            }
 
             return this.PartialView("_TicketStatePie", model);
         }
