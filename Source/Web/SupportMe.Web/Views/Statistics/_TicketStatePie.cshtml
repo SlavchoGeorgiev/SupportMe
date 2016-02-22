@@ -1,0 +1,31 @@
+﻿@model IEnumerable<SupportMe.Web.ViewModels.Statistics.TicketStatePieViewModel>
+<div class="k-content wide">
+    @(Html.Kendo().Chart(Model)
+        .Name("chart")
+        .Title("Break-up of ticket state")
+        .Legend(legend => legend
+            .Position(ChartLegendPosition.Bottom)
+        )
+        .SeriesColors(new string[] { "#2780e3", "#293a4e", "#3fb618" })
+        .Series(series =>
+        {
+            series.Pie(
+                model => model.Percentage,
+                model => model.Source,
+                null, // Color expression is omitted
+                model => model.Explode
+            )
+            .Labels(labels => labels
+                .Template("#= category # - #= kendo.format('{0:P}', percentage)#")
+                .Background("transparent")
+                .Visible(true)
+            )
+            .StartAngle(150);
+        })
+        .Tooltip(tooltip =>
+        tooltip
+            .Visible(true)
+            .Template("#= category # - #= kendo.format('{0:P}', percentage)#")
+        )
+    )
+</div>

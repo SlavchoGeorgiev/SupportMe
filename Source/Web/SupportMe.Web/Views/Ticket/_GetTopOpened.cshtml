@@ -14,12 +14,9 @@
             .Format("{0:" +
             System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern + " " +
             System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern + "}");
-        if (User.Identity.IsAuthenticated)
-        {
-            colums.Bound(col => col.Id)
-            .ClientTemplate(@Html.ActionLink("Details", "Details", "Ticket", new { area = string.Empty, id = "#= Id#" }, new { @class = "btn btn-success" }).ToString())
-            .HeaderTemplate("View details");
-        }
+        colums.Bound(col => col.Id)
+        .ClientTemplate(@Html.ActionLink("Details", "Details", "Ticket", new { area = string.Empty, id = "#= Id#" }, new { @class = "btn btn-success" }).ToString())
+        .HeaderTemplate("View details");
     })
     .DataSource(datasource =>
     {
