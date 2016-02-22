@@ -24,7 +24,7 @@
             {
                 model.Add(new TicketStatePieViewModel("Open", states.Open / (decimal)states.Total * 100));
                 model.Add(new TicketStatePieViewModel("On Hold", states.Hold / (decimal)states.Total * 100));
-                model.Add(new TicketStatePieViewModel("Close", states.Closed / (decimal)states.Total * 100));
+                model.Add(new TicketStatePieViewModel("Closed", states.Closed / (decimal)states.Total * 100));
             }
 
             return this.PartialView("_TicketStatePie", model);

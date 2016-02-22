@@ -4,10 +4,17 @@
 
 <br />
 <div class="jumbotron text-center">
-    <h1>Wellcome to Support Me System</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Wellcome to Support Me System</h1>
+        </div>
+    </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8">
+        <img src="/Content/Images/home-wallpaper.png" class="img-thumbnail well" />
+    </div>
+    <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-body">
                 @Html.Action("TicketStatePie", "Statistics", new { area = string.Empty })
