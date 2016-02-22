@@ -229,6 +229,7 @@
     <Compile Include="Areas\Support\ViewModels\Ticket\CreateTicketViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -408,6 +409,8 @@
     <Content Include="Views\Shared\EditorTemplates\TicketMassageInputModel.cshtml" />
     <Content Include="Views\Shared\_EmployeeLinksListItems.cshtml" />
     <Content Include="Views\Ticket\_GetTopOpened.cshtml" />
+    <None Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Ticket\_GetAllInGrid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

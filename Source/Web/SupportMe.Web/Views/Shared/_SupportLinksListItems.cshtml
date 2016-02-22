@@ -1,3 +1,4 @@
 ﻿@using SupportMe.Common.Constants
 <li class="dropdown-header">Tickets</li>
-<li>@Html.ActionLink("Create ticket", "Create", "Ticket", new { area = MvcArea.Support }, null)</li>
+<li><a href="/Dashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+<li><a href="@MvcArea.Support/Ticket/Create"><span class="glyphicon glyphicon-send"></span> Create ticket</a></li>

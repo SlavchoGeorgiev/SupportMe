@@ -1,0 +1,57 @@
+﻿@using SupportMe.Common.Constants
+@using SupportMe.Data.Common.Constants
+@using SupportMe.Web.ViewModels.Ticket
+
+@(Html.Kendo()
+    .Grid<TicketInfoViewModel>()
+    .Name("my-kendo-grid")
+    .Columns(colums =>
+    {
+        colums.Bound(col => col.Id).Hidden();
+        colums.Bound(col => col.Title);
+        colums.Bound(col => col.State);
+        colums.Bound(col => col.Priority);
+        colums.Bound(col => col.Type);
+        colums.Bound(col => col.Location);
+        colums.Bound(col => col.Author);
+        colums.Bound(col => col.CreatedOn)
+        .Format("{0:" +
+        System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern + " " +
+        System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern + "}"); ;
+        colums.Bound(col => col.Id)
+            .ClientTemplate(@Html.ActionLink("Details", "Details", "Ticket", new { area = string.Empty, id = "#= Id#" }, new { @class = "btn btn-success" }).ToString())
+            .HeaderTemplate("View details");
+    })
+    .ColumnMenu()
+    .ToolBar(tools =>
+    {
+        if (User.IsInRole(UserRole.Admin) || User.IsInRole(UserRole.Support))
+        {
+            tools.Custom()
+                .Text("Create new ticket")
+                .Action("Create", "Ticket", new { area = MvcArea.Support });
+        }
+        else
+        {
+            tools.Custom()
+                .Text("Create new ticket")
+                .Action("Create", "Ticket", new { area = string.Empty });
+        }
+    })
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+    .Pageable(page => page.Refresh(true))
+    .Sortable()
+    .Filterable()
+    .Groupable()
+    .DataSource(datasource =>
+    {
+        datasource
+            .Ajax()
+            .PageSize(10)
+            .Model(m => m.Id(model => model.Id))
+            .Sort(sort =>
+            {
+                sort.Add(m => m.CreatedOn).Descending();
+            })
+            .Read(read => read.Action("ReadAll", "Ticket"));
+    }))

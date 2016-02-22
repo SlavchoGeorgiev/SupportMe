@@ -1,4 +1,5 @@
-﻿@using SupportMe.Web.Areas.Admin.ViewModels.Tickets
+﻿@using SupportMe.Common.Constants
+@using SupportMe.Web.Areas.Admin.ViewModels.Tickets
     @{
         ViewBag.Title = "Tickets";
     }
@@ -21,7 +22,13 @@
                       colums.Bound(col => col.Type);
                       colums.Bound(col => col.Location);
                       colums.Bound(col => col.Author);
-                      colums.Bound(col => col.CreatedOn);
+                      colums.Bound(col => col.CreatedOn)
+                        .Format("{0:" +
+                        System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern + " " +
+                        System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern + "}"); ;
+                      colums.Bound(col => col.Id)
+                          .ClientTemplate(@Html.ActionLink("Details", "Details", "Ticket", new { area = string.Empty, id = "#= Id#" }, new { @class = "btn btn-success" }).ToString())
+                          .HeaderTemplate("View details");
                       colums.Command(comand => comand.Edit());
                       colums.Command(comand => comand.Destroy());
                   })
@@ -29,6 +36,9 @@
 
                   .ToolBar(tools =>
                   {
+                      tools.Custom()
+                          .Text("Create new ticket")
+                          .Action("Create", "Ticket", new { area = MvcArea.Support });
                       tools.Excel().Text("Export Tickets to Excel");
                   })
                   .Editable(edit => edit.Mode(GridEditMode.PopUp))

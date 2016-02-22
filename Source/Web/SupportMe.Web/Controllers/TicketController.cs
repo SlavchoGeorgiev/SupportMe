@@ -154,5 +154,21 @@
             var result = locations.ToDataSourceResult(request);
             return this.Json(result);
         }
+
+        public ActionResult GetAllInGrid()
+        {
+            return this.PartialView("_GetAllInGrid");
+        }
+
+        [HttpPost]
+        public ActionResult ReadAll([DataSourceRequest]DataSourceRequest request)
+        {
+            var locations = this.ticketService
+                .GetAll()
+                .To<TicketInfoViewModel>();
+
+            var result = locations.ToDataSourceResult(request);
+            return this.Json(result);
+        }
     }
 }
