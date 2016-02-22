@@ -1,7 +1,6 @@
 ﻿namespace SupportMe.Web.Controllers
 {
     using System.Web.Mvc;
-    using Common.Constants;
 
     public class HomeController : BaseController
     {

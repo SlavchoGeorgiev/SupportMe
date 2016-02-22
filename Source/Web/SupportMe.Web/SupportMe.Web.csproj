@@ -407,6 +407,7 @@
     <Content Include="Views\Shared\EditorTemplates\TicketInputModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TicketMassageInputModel.cshtml" />
     <Content Include="Views\Shared\_EmployeeLinksListItems.cshtml" />
+    <Content Include="Views\Ticket\_GetTopOpened.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

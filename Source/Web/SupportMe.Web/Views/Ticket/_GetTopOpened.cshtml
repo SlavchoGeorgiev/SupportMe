@@ -1,0 +1,35 @@
+﻿@using SupportMe.Web.ViewModels.Ticket
+
+@(Html.Kendo()
+    .Grid<TicketInfoViewModel>()
+    .Name("my-kendo-grid")
+    .Columns(colums =>
+    {
+        colums.Bound(col => col.Title);
+        colums.Bound(col => col.Priority);
+        colums.Bound(col => col.Type);
+        colums.Bound(col => col.Location);
+        colums.Bound(col => col.Author);
+        colums.Bound(col => col.CreatedOn)
+            .Format("{0:" +
+            System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern + " " +
+            System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern + "}");
+        if (User.Identity.IsAuthenticated)
+        {
+            colums.Bound(col => col.Id)
+            .ClientTemplate(@Html.ActionLink("Details", "Details", "Ticket", new { area = string.Empty, id = "#= Id#" }, new { @class = "btn btn-success" }).ToString())
+            .HeaderTemplate("View details");
+        }
+    })
+    .DataSource(datasource =>
+    {
+        datasource
+            .Ajax()
+            .Sort(sort =>
+            {
+                sort.Add(m => m.CreatedOn).Descending();
+            })
+            .PageSize(10)
+            .Model(m => m.Id(model => model.Id))
+            .Read(read => read.Action("ReadTopOpened", "Ticket"));
+    }))

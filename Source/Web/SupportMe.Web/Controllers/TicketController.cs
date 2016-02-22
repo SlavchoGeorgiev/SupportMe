@@ -6,6 +6,8 @@
     using Common.Constants;
     using Data.Models;
     using Infrastructure.Mapping;
+    using Kendo.Mvc.Extensions;
+    using Kendo.Mvc.UI;
     using Services.Data.Contracts;
     using ViewModels.Ticket;
 
@@ -132,6 +134,25 @@
             }
 
             return this.View(model);
+        }
+
+        [OutputCache(Duration = 1 * 60)]
+        [AllowAnonymous]
+        public ActionResult GetTopOpened()
+        {
+            return this.PartialView("_GetTopOpened");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult ReadTopOpened([DataSourceRequest]DataSourceRequest request)
+        {
+            var locations = this.ticketService
+                .GetAll()
+                .To<TicketInfoViewModel>();
+
+            var result = locations.ToDataSourceResult(request);
+            return this.Json(result);
         }
     }
 }
