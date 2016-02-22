@@ -1,0 +1,68 @@
+﻿@using SupportMe.Data.Common.Constants
+@model SupportMe.Web.ViewModels.Massage.MassageForTicketViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Ajax.BeginForm(
+                        actionName: "AddToTicket",
+                        controllerName: "Massage",
+                        ajaxOptions: new AjaxOptions()
+                        {
+                            UpdateTargetId = "massages-list",
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.Replace,
+                        },
+                        routeValues: new { area = string.Empty, id = Model.TicketId },
+                        htmlAttributes: new { @class = "form-horizontal well" }
+                        ))
+        {
+            @Html.AntiForgeryToken()
+            <fieldset>
+                <legend>Your massage</legend>
+                @Html.HiddenFor(m => m.TicketId)
+                @Html.EditorFor(m => m.Massage)
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <input type="submit" class="btn btn-primary" value="Add">
+                    </div>
+                </div>
+            </fieldset>
+        }
+    </div>
+</div>
+
+@foreach (var massage in Model.Massages)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-10">
+                            Author: <span class="text-primary"><small>@massage.Author.UserName</small> @massage.Author.FirstName @massage.Author.LastName</span>
+                        </div>
+                        @if (User.IsInRole(UserRole.Support) || User.IsInRole(UserRole.Admin))
+                        {
+                            <div class="col-md-2 text-right">
+                                Pricing units: <span class="badge">@massage.PricingUnits</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @(Html.Raw(massage.Content.Replace("/n", "<br/>")))
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @massage.CreatedOn
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

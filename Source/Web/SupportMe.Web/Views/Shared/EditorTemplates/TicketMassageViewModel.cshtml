@@ -1,0 +1,13 @@
+﻿@using SupportMe.Data.Common.Constants
+@model SupportMe.Web.ViewModels.Massage.TicketMassageViewModel
+
+@Html.HiddenFor(m => m.Id)
+@Html.EditorFor(m => m.Content)
+@if (User.IsInRole(UserRole.Support) || User.IsInRole(UserRole.Admin))
+{
+    @Html.EditorFor(m => m.PricingUnits)
+}
+else
+{
+    <input id="Massage_PricingUnits" name="Massage.PricingUnits" type="hidden" value="0">
+}

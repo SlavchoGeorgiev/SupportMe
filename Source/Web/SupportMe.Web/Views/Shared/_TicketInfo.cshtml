@@ -1,7 +1,14 @@
 ﻿@model SupportMe.Web.ViewModels.Ticket.TicketInfoViewModel
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
+        <div class="well">
+            <h2><small>Title: </small> @Model.Title</h2>
+            <small>Created on: <em>@Model.CreatedOn</em></small><small> by <em>@Model.Author</em></small>
+        </div>
+    </div>
+
+    <div class="col-md-6">
         <dl class="dl-horizontal well">
             <dt>Priority: </dt>
             <dd>
@@ -21,12 +28,9 @@
             </dd>
         </dl>
     </div>
-    <div class="col-md-8">
-        <div class="well">
-            <h2 class="text-center">@Model.Title</h2>
-            <small><i>Created on:</i> @Model.CreatedOn</small><small>by <em>@Model.Author</em></small>
-        </div>
-    </div>
+</div>
+
+<div class="row">
     <div class="col-md-12">
         @Ajax.ActionLink(
             "Edit",
@@ -38,7 +42,7 @@
                 HttpMethod = "GET",
                 InsertionMode = InsertionMode.Replace,
             },
-            new { @class = "btn-lg btn-primary btn-block text-center" })
+            new { @class = "btn btn-warning btn-block text-center" })
     </div>
 </div>
 

@@ -21,7 +21,8 @@
         [HttpGet]
         public ActionResult Details(int id)
         {
-            return this.View(id);
+            var model = new TicketDetailsViewModel() { Id = id };
+            return this.View(model);
         }
 
         [HttpGet]

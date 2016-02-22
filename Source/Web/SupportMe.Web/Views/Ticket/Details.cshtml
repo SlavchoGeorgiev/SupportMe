@@ -1,13 +1,42 @@
-﻿@model int
+﻿@model SupportMe.Web.ViewModels.Ticket.TicketDetailsViewModel
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Ticket details";
 }
 
-<h2>Ticket Details</h2>
-<div id="ticket-info">
-    @Html.Action("TicketInfo", "Ticket", new { id = Model, area = string.Empty })
+<h2>Ticket details</h2>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Info</h3>
+            </div>
+            <div class="panel-body">
+                <div id="ticket-info">
+                    @Html.Action("TicketInfo", "Ticket", new { id = Model.Id, area = string.Empty })
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Massages</h3>
+            </div>
+            <div class="panel-body">
+                <div id="massages-list">
+                    @Html.Action("ForTicket", "Massage", new { id = Model.Id, area = string.Empty })
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/jqueryuno")

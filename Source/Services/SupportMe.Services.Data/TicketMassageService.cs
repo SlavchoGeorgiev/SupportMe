@@ -1,5 +1,6 @@
 ﻿namespace SupportMe.Services.Data
 {
+    using System.Linq;
     using Contracts;
     using SupportMe.Data.Common.Contracts;
     using SupportMe.Data.Models;
@@ -24,6 +25,13 @@
             this.BaseRepository.Add(ticketMassage);
             this.BaseRepository.SaveChanges();
             return ticketMassage;
+        }
+
+        public IQueryable<TicketMassage> GetAllForTicket(int ticketId)
+        {
+            return this.GetAll()
+                .Where(m => m.TicketId == ticketId)
+                .OrderByDescending(m => m.CreatedOn);
         }
     }
 }
