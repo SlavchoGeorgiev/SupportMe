@@ -26,6 +26,10 @@
                     <li>
                         <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
                     </li>
+                    @if (User.IsInRole(UserRole.Employee))
+                    {
+                        @Html.Partial("_EmployeeLinksListItems")
+                    }
                     @if (User.IsInRole(UserRole.Support) || User.IsInRole(UserRole.Admin))
                     {
                         <li class="dropdown">

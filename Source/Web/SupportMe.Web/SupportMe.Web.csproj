@@ -259,10 +259,13 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Areas\Support\ViewModels\Ticket\TicketInputModel.cs" />
+    <Compile Include="ViewModels\Massage\TicketMassageInputModel.cs" />
+    <Compile Include="ViewModels\Ticket\CreateTicketViewModel.cs" />
     <Compile Include="ViewModels\Ticket\TicketDetailsViewModel.cs" />
     <Compile Include="ViewModels\Ticket\TicketInfoViewModel.cs" />
     <Compile Include="ViewModels\Massage\MassageForTicketViewModel.cs" />
     <Compile Include="ViewModels\Massage\TicketMassageViewModel.cs" />
+    <Compile Include="ViewModels\Ticket\TicketInputModel.cs" />
     <Compile Include="ViewModels\User\UserInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -400,6 +403,10 @@
     <Content Include="Views\Shared\EditorTemplates\TicketInfoViewModel.cshtml" />
     <Content Include="Views\Shared\_MassagesForTicket.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TicketMassageViewModel.cshtml" />
+    <Content Include="Views\Ticket\Create.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TicketInputModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TicketMassageInputModel.cshtml" />
+    <Content Include="Views\Shared\_EmployeeLinksListItems.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

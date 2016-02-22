@@ -2,7 +2,6 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using Areas.Admin.ViewModels.Tickets;
     using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping;

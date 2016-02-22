@@ -1,48 +1,52 @@
 ﻿@model SupportMe.Web.ViewModels.Ticket.TicketInfoViewModel
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="well">
-            <h2><small>Title: </small> @Model.Title</h2>
-            <small>Created on: <em>@Model.CreatedOn</em></small><small> by <em>@Model.Author</em></small>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <dl class="dl-horizontal well">
-            <dt>Priority: </dt>
-            <dd>
-                @Model.Priority
-            </dd>
-            <dt>State: </dt>
-            <dd>
-                @Model.State
-            </dd>
-            <dt>Type: </dt>
-            <dd>
-                @Model.Type
-            </dd>
-            <dt>Location: </dt>
-            <dd>
-                @Model.Location
-            </dd>
-        </dl>
-    </div>
-</div>
-
-<div class="row">
     <div class="col-md-12">
-        @Ajax.ActionLink(
-            "Edit",
-            "Edit",
-            new { id = Model.Id },
-            new AjaxOptions
-            {
-                UpdateTargetId = "ticket-info",
-                HttpMethod = "GET",
-                InsertionMode = InsertionMode.Replace,
-            },
-            new { @class = "btn btn-warning btn-block text-center" })
+        <div class="well">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2><small>Title: </small> @Model.Title</h2>
+                </div>
+                <div class="col-md-4">
+                    <dl class="dl-horizontal">
+                        <dt>Priority: </dt>
+                        <dd>
+                            @Model.Priority
+                        </dd>
+                        <dt>State: </dt>
+                        <dd>
+                            @Model.State
+                        </dd>
+                        <dt>Type: </dt>
+                        <dd>
+                            @Model.Type
+                        </dd>
+                        <dt>Location: </dt>
+                        <dd>
+                            @Model.Location
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <small>Created on: <em>@Model.CreatedOn</em></small><small> by <em>@Model.Author</em></small>
+                </div>
+                <div class="col-md-3">
+                    @Ajax.ActionLink(
+                        "Edit",
+                        "Edit",
+                        new { id = Model.Id },
+                        new AjaxOptions
+                        {
+                            UpdateTargetId = "ticket-info",
+                            HttpMethod = "GET",
+                            InsertionMode = InsertionMode.Replace,
+                        },
+                        new { @class = "btn btn-block btn-success" })
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
