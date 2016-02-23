@@ -96,5 +96,14 @@
                 this.manager.AddToRoles(id, roles.ToArray());
             }
         }
+
+        public void AddAvatar(string id, string avatarFileName, string avatarFileExtension)
+        {
+            var user = this.usersRepository.GetById(id);
+            user.AvatarFileName = avatarFileName;
+            user.AvatarFileExtension = avatarFileExtension;
+            this.usersRepository.Update(user);
+            this.usersRepository.SaveChanges();
+        }
     }
 }

@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Upload new avatar";
+}
+
+<div class="jumbotron">
+    <h2 class="text-center">Select new avatar image</h2>
+</div>
+<div class="row">
+    <div class="avatar-wrapper">
+        @Html.Action("AvatarUploadForm", "User", new { area = string.Empty })
+    </div>
+</div>

@@ -3,6 +3,7 @@
     using System.Collections.Generic;
 
     using Microsoft.AspNet.Identity;
+    using User;
 
     public class IndexViewModel
     {
@@ -15,5 +16,7 @@
         public bool TwoFactor { get; set; }
 
         public bool BrowserRemembered { get; set; }
+
+        public UserInfoViewModel UserInfo { get; set; }
     }
 }

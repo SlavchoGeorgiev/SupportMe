@@ -26,6 +26,12 @@
         [MaxLength(80)]
         public string LastName { get; set; }
 
+        [MaxLength(254)]
+        public string AvatarFileName { get; set; }
+
+        [MaxLength(6)]
+        public string AvatarFileExtension { get; set; }
+
         public int? ContactId { get; set; }
 
         [ForeignKey("ContactId")]

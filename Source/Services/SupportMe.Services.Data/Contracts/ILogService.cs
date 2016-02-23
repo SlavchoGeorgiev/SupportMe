@@ -1,7 +1,5 @@
 ﻿namespace SupportMe.Services.Data.Contracts
 {
-    using System.Collections.Specialized;
-    using System.Net;
     using SupportMe.Data.Models;
 
     public interface ILogService : IBaseService<RequestLog>

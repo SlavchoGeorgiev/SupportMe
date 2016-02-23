@@ -10,6 +10,7 @@
     using Microsoft.Owin.Security;
 
     using SupportMe.Web.ViewModels.Manage;
+    using ViewModels.User;
 
     [Authorize]
     public class ManageController : BaseController
@@ -100,9 +101,8 @@
                 PhoneNumber = await this.UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await this.UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await this.UserManager.GetLoginsAsync(userId),
-                BrowserRemembered =
-                                    await
-                                    this.AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
+                BrowserRemembered = await this.AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
+                UserInfo = this.Mapper.Map<UserInfoViewModel>(this.CurrentUser)
             };
             return this.View(model);
         }

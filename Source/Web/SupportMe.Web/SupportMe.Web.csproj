@@ -239,6 +239,7 @@
     <Compile Include="Controllers\MassageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\BaseActionFilterAttribute.cs" />
     <Compile Include="Filters\LogAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -273,6 +274,8 @@
     <Compile Include="ViewModels\Massage\MassageForTicketViewModel.cs" />
     <Compile Include="ViewModels\Massage\TicketMassageViewModel.cs" />
     <Compile Include="ViewModels\Ticket\TicketInputModel.cs" />
+    <Compile Include="ViewModels\User\DetailsViewModel.cs" />
+    <Compile Include="ViewModels\User\UserDetailsViewModel.cs" />
     <Compile Include="ViewModels\User\UserInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -282,6 +285,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CosmoTheme\bootstrap.css" />
     <Content Include="Content\CosmoTheme\bootstrap.min.css" />
+    <Content Include="Content\Images\home-wallpaper.png" />
     <Content Include="Content\Kendo\kendo.common-bootstrap.core.min.css" />
     <Content Include="Content\Kendo\kendo.common-bootstrap.min.css" />
     <Content Include="Content\Kendo\kendo.common.core.min.css" />
@@ -419,12 +423,14 @@
     <None Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Ticket\_GetAllInGrid.cshtml" />
     <Content Include="Views\Statistics\_TicketStatePie.cshtml" />
+    <Content Include="Views\Shared\_AvatarUploadForm.cshtml" />
+    <None Include="Views\User\AvatarUpload.cshtml" />
+    <None Include="Views\User\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\avatars\" />
     <Folder Include="Areas\Admin\Views\Shared\DisplayTemplates\" />
     <Folder Include="Areas\Support\Views\Shared\DisplayTemplates\" />
-    <Folder Include="Content\Images\" />
     <Folder Include="Content\Kendo\Bootstrap\" />
     <Folder Include="Content\Kendo\fonts\" />
     <Folder Include="Content\Kendo\images\" />

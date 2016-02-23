@@ -7,15 +7,41 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your account settings</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 well well-lg">
+                    <h2 class="text-center">Hello @Model.UserInfo.UserName</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <dl class="dl-horizontal">
+                        <dt>First name:</dt>
+                        <dd>@Model.UserInfo.FirstName</dd>
+                        <dt>Last name:</dt>
+                        <dd>@Model.UserInfo.LastName</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src='@Url.Action("GetAvatar", "User", new { area = string.Empty, id = this.Model.UserInfo.Id })' class="img-thumbnail user-avatar" alt="User avatar" />
+        </div>
+    </div>
     <hr />
+    <div class="row">
+        <div class="col-md-3">
+            @Html.ActionLink("View your public profile page.", "Details", "User", new { area = string.Empty, id = this.Model.UserInfo.Id }, new { @class = "btn btn-primary" })
+        </div>
+        <div class="col-lg-3">
+            @Html.ActionLink("Change your avatar", "AvatarUpload", "User", new { area = string.Empty, id = this.Model.UserInfo.Id }, new { @class = "btn btn-primary" })
+        </div>
+        <div class="col-lg-3">
+            @(Model.HasPassword ? Html.ActionLink("Change your password", "ChangePassword", null, new { @class = "btn btn-primary" }) : Html.ActionLink("Create", "SetPassword", null, new { @class = "btn btn-primary" }))
+        </div>
+    </div>
     <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
-            @(Model.HasPassword ? Html.ActionLink("Change your password", "ChangePassword") : Html.ActionLink("Create", "SetPassword"))
-            ]
-        </dd>
         @*<dt>External Logins:</dt>
             <dd>
                 @Model.Logins.Count [

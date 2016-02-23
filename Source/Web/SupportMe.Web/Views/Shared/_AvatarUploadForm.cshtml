@@ -1,0 +1,16 @@
+﻿@model string
+<div class="col-md-6">
+    <img src='@Url.Action("GetAvatar", "User", new { area = string.Empty, id = Model})' class="img-thumbnail user-avatar" alt="User avatar" />
+</div>
+<div class="col-md-6">
+    <form method="post" action='@Url.Action("AvatarUpload", "User", new { area = string.Empty })' class="form-horizontal">
+        <div class="col-md-12">
+            @((Html.Kendo().Upload()
+                      .Name("files"))
+            )
+        </div>
+        <div class="col-md-12">
+            <input type="submit" value="Upload" class="btn btn-primary btn-block" />
+        </div>
+    </form>
+</div>

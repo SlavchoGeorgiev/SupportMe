@@ -29,5 +29,7 @@
         IEnumerable<string> GetUserRoles(string userId);
 
         void UpdateRoles(string id, IEnumerable<string> roles);
+
+        void AddAvatar(string id, string avatarFileName, string avatarFileExtension);
     }
 }

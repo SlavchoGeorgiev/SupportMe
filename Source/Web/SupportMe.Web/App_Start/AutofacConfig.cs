@@ -89,6 +89,10 @@
                 .PropertiesAutowired()
                 .InstancePerDependency();
 
+            builder.RegisterType<UserController>()
+                .PropertiesAutowired()
+                .InstancePerDependency();
+
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseActionFilterAttribute>().PropertiesAutowired();
         }

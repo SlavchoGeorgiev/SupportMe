@@ -16,3 +16,6 @@
     white-space: normal;
 }
 
+.user-avatar {
+    max-height: 300px;
+}
