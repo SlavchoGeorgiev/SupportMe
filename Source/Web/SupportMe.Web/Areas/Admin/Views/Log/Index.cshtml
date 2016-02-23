@@ -1,0 +1,60 @@
+﻿@using SupportMe.Web.Areas.Admin.ViewModels.Log
+@{
+    ViewBag.Title = "Logs";
+}
+@Html.Partial("_ManagmentHeader")
+<div class="row">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">@ViewBag.Title</h3>
+        </div>
+        <div class="panel-body">
+            @(Html.Kendo()
+                  .Grid<LogViewModel>()
+                  .Name("my-kendo-grid")
+                  .Columns(colums =>
+                  {
+                      colums.Bound(col => col.Id).Hidden();
+                      colums.Bound(col => col.UserId);
+                      colums.Bound(col => col.Username);
+                      colums.Bound(col => col.Ip);
+                      colums.Bound(col => col.Url);
+                      colums.Bound(col => col.Method);
+                      colums.Bound(col => col.CreatedOn)
+                        .Format("{0:" +
+                        System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.LongTimePattern + " " +
+                        System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern + "}");
+                  })
+                  .ColumnMenu()
+                  .ToolBar(tools =>
+                  {
+                      tools.Excel().Text("Export logs to Excel");
+                  })
+                  .Editable(edit => edit.Mode(GridEditMode.PopUp))
+                  .Pageable(page => page.Refresh(true))
+                  .Sortable()
+                  .Filterable()
+                  .Groupable()
+                  .Excel(excel =>
+                  {
+                      excel.AllPages(true);
+                      excel.FileName("Logs_" + DateTime.Now.ToString() + ".xlsx");
+                      excel.Filterable(true);
+                      excel.ProxyURL(Url.Action("ExportToExcel", "Log"));
+                  })
+                  .DataSource(datasource =>
+                  {
+                      datasource
+                          .Ajax()
+                          .PageSize(30)
+                          .Sort(sort => sort.Add(m => m.CreatedOn).Descending())
+                          .Model(m => m.Id(model => model.Id))
+                          .Read(read => read.Action("Read", "Log"));
+                  }))
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script src="http://kendo.cdn.telerik.com/2016.1.112/js/jszip.min.js"></script>
+}

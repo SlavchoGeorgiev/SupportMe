@@ -31,6 +31,8 @@
 
         public IDbSet<TicketMassage> TicketMassages { get; set; }
 
+        public IDbSet<RequestLog> RequestLogs { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

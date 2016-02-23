@@ -13,6 +13,7 @@
     using Data.Common;
     using Data.Common.Contracts;
     using Data.Models;
+    using Filters;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Services.Data.Contracts;
@@ -87,6 +88,9 @@
             builder.RegisterType<TicketController>()
                 .PropertiesAutowired()
                 .InstancePerDependency();
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .AssignableTo<BaseActionFilterAttribute>().PropertiesAutowired();
         }
     }
 }

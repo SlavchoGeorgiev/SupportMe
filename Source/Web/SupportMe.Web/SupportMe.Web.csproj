@@ -208,6 +208,7 @@
     <Compile Include="Areas\Admin\Controllers\CompanyController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LogController.cs" />
     <Compile Include="Areas\Admin\Controllers\TicketController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Addresses\AddressViewModel.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Areas\Admin\ViewModels\Contacts\ContactIndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Locations\LocationDropDownViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Locations\LocationViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Log\LogViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Tickets\TicketViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users\ManageRoleInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Users\UserShortInfoViewModel.cs" />
@@ -237,6 +239,8 @@
     <Compile Include="Controllers\MassageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
+    <Compile Include="Filters\BaseActionFilterAttribute.cs" />
+    <Compile Include="Filters\LogAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -324,6 +328,7 @@
     <Content Include="Areas\Admin\Views\Ticket\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TicketViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\User\ManageRoles.cshtml" />
+    <Content Include="Areas\Admin\Views\Log\Index.cshtml" />
     <None Include="Areas\Support\Views\Ticket\Create.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
@@ -419,6 +424,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Shared\DisplayTemplates\" />
     <Folder Include="Areas\Support\Views\Shared\DisplayTemplates\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Content\Kendo\Bootstrap\" />
     <Folder Include="Content\Kendo\fonts\" />
     <Folder Include="Content\Kendo\images\" />

@@ -3,8 +3,10 @@
     using System;
     using System.Web.Mvc;
     using Data.Common.Constants;
+    using Filters;
     using Web.Controllers;
 
+    [Log]
     [Authorize(Roles = UserRole.Admin)]
     public abstract class AdministrationController : BaseController
     {

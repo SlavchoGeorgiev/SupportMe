@@ -63,6 +63,7 @@
     <Compile Include="Company.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="RequestLog.cs" />
     <Compile Include="Team.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="TicketMassage.cs" />
