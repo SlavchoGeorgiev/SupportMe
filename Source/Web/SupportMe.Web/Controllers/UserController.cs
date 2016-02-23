@@ -7,21 +7,65 @@
     using System.Web;
     using System.Web.Mvc;
     using Common.Constants;
+    using Services.Data.Contracts;
+    using ViewModels.Address;
+    using ViewModels.Location;
     using ViewModels.User;
 
     [Authorize]
     public class UserController : BaseController
     {
+        private readonly ILocationService locationService;
+
+        private readonly IContactService contactService;
+
+        private readonly IAddressService addressService;
+
         private const string AvatarPath = "/App_Data/avatars/";
 
-        public const string DefaultAvatar = "avatar.jpg";
+        private const string DefaultAvatar = "avatar.jpg";
 
         private const int MaxAvatarSize = 1024000;
+
+        public UserController(
+            ILocationService locationService,
+            IContactService contactService,
+            IAddressService addressService)
+        {
+            this.locationService = locationService;
+            this.contactService = contactService;
+            this.addressService = addressService;
+        }
 
         public ActionResult Details(string id)
         {
             var model = new DetailsViewModel();
-            model.User = this.Mapper.Map<UserDetailsViewModel>(this.CurrentUser);
+            var user = this.UserService.GetById(id).FirstOrDefault();
+
+            if (user == null)
+            {
+                this.TempData[GlobalMessages.Warning] = "User not found";
+                return this.RedirectToAction("Index", "Home", new {area = string.Empty});
+            }
+
+            model.User = this.Mapper.Map<UserDetailsViewModel>(user);
+            var userAddress = this.addressService.GetById(model.User.Contact.AddressId).FirstOrDefault();
+            if (userAddress != null && model.User.Contact != null)
+            {
+                model.User.Contact.Address = this.Mapper.Map<AddressViewModel>(userAddress);
+            }
+
+            var userLocation = this.locationService.GetById(model.User.LocationId).FirstOrDefault();
+            if (userLocation != null)
+            {
+                model.Location = this.Mapper.Map<LocationViewModel>(userLocation);
+                var locationAddress = this.addressService.GetById(model.Location.Contact.AddressId).FirstOrDefault();
+                if (locationAddress != null)
+                {
+                    model.Location.Contact.Address = this.Mapper.Map<AddressViewModel>(locationAddress);
+                }
+            }
+
             return this.View(model);
         }
 
@@ -34,34 +78,31 @@
         [HttpPost]
         public ActionResult AvatarUpload(IEnumerable<HttpPostedFileBase> files)
         {
-            if (files != null)
+            var file = files?.FirstOrDefault();
+            if (file != null)
             {
-                var file = files.FirstOrDefault();
-                if (file != null)
+                var fileExtension = Path.GetExtension(file.FileName).ToLower();
+                if (fileExtension != ".jpg" && fileExtension != ".jpeg")
                 {
-                    var fileExtension = Path.GetExtension(file.FileName).ToLower();
-                    if (fileExtension != ".jpg" && fileExtension != ".jpeg")
-                    {
-                        this.TempData[GlobalMessages.Danger] = "Image must be with extension .jpg or .jpeg";
-                        return this.RedirectToAction("AvatarUpload");
-                    }
-
-                    if (file.ContentLength > MaxAvatarSize)
-                    {
-                        this.TempData[GlobalMessages.Danger] = "Image must be smaller than 1MB";
-                        return this.RedirectToAction("AvatarUpload");
-                    }
-
-                    var fileName = this.CurrentUser.Id;
-                    var path = Path.Combine(Server.MapPath("~/App_Data/avatars"), $"{fileName}{fileExtension}");
-                    file.SaveAs(path);
-                    this.UserService.AddAvatar(this.CurrentUser.Id, fileName, fileExtension);
-                    this.TempData[GlobalMessages.Success] = "Avarat updated!";
+                    this.TempData[GlobalMessages.Danger] = "Image must be with extension .jpg or .jpeg";
                     return this.RedirectToAction("AvatarUpload");
                 }
+
+                if (file.ContentLength > MaxAvatarSize)
+                {
+                    this.TempData[GlobalMessages.Danger] = "Image must be smaller than 1MB";
+                    return this.RedirectToAction("AvatarUpload");
+                }
+
+                var fileName = this.CurrentUser.Id;
+                var path = Path.Combine(this.Server.MapPath("~/App_Data/avatars"), $"{fileName}{fileExtension}");
+                file.SaveAs(path);
+                this.UserService.AddAvatar(this.CurrentUser.Id, fileName, fileExtension);
+                this.TempData[GlobalMessages.Success] = "Avarat updated!";
+                return this.RedirectToAction("AvatarUpload");
             }
 
-            this.TempData[GlobalMessages.Danger] = "Please select file uploaded!";
+            this.TempData[GlobalMessages.Danger] = "Please select file!";
             return this.RedirectToAction("AvatarUpload");
         }
 

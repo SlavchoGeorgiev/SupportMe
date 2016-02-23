@@ -68,6 +68,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SupportMe.Common\SupportMe.Common.csproj">
+      <Project>{9772EA1F-ADAF-425E-8484-A6087DA8632C}</Project>
+      <Name>SupportMe.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SupportMe.Data.Common\SupportMe.Data.Common.csproj">
       <Project>{edfe3c57-ef5b-4636-9ecc-d0baca6b6379}</Project>
       <Name>SupportMe.Data.Common</Name>

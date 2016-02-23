@@ -1,0 +1,21 @@
+﻿@model SupportMe.Web.ViewModels.User.UserDetailsViewModel
+<dl class="dl-horizontal">
+    <dt>
+        @Html.LabelFor(m => m.UserName)
+    </dt>
+    <dd>
+        @Model.UserName
+    </dd>
+    <dt>
+        Name
+    </dt>
+    <dd>
+        @Model.FirstName @Model.LastName
+    </dd>
+    <dt>
+        Registration email
+    </dt>
+    <dd>
+        @Model.Email
+    </dd>
+</dl>

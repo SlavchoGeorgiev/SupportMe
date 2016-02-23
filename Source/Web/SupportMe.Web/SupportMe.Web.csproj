@@ -254,6 +254,8 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\Address\AddressViewModel.cs" />
+    <Compile Include="ViewModels\Contact\ContactViewModel.cs" />
     <Compile Include="ViewModels\Location\LocationDropDownViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
@@ -277,6 +279,7 @@
     <Compile Include="ViewModels\User\DetailsViewModel.cs" />
     <Compile Include="ViewModels\User\UserDetailsViewModel.cs" />
     <Compile Include="ViewModels\User\UserInfoViewModel.cs" />
+    <Compile Include="ViewModels\Location\LocationViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -424,6 +427,9 @@
     <Content Include="Views\Ticket\_GetAllInGrid.cshtml" />
     <Content Include="Views\Statistics\_TicketStatePie.cshtml" />
     <Content Include="Views\Shared\_AvatarUploadForm.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\UserDetailsViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\LocationViewModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ContactViewModel.cshtml" />
     <None Include="Views\User\AvatarUpload.cshtml" />
     <None Include="Views\User\Details.cshtml" />
   </ItemGroup>
@@ -439,7 +445,6 @@
     <Folder Include="Scripts\Kendo\messages\" />
     <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

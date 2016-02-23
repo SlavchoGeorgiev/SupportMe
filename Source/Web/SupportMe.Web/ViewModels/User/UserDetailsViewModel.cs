@@ -1,12 +1,14 @@
 ﻿namespace SupportMe.Web.ViewModels.User
 {
     using System.ComponentModel.DataAnnotations;
-    using AutoMapper;
+    using Contact;
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class UserDetailsViewModel : IMapFrom<User>, IHaveCustomMappings
+    public class UserDetailsViewModel : IMapFrom<User>
     {
+        public string Id { get; set; }
+
         [Required]
         [Display(Name = "Username")]
         public string UserName { get; set; }
@@ -25,20 +27,11 @@
         public string LastName { get; set; }
 
         [Display(Name = "Contact Id")]
-        public string ContactId { get; set; }
+        public int ContactId { get; set; }
 
         [Display(Name = "Location Id")]
-        public string LocationId { get; set; }
+        public int LocationId { get; set; }
 
-        [Display(Name = "Location name")]
-        public string LocationName { get; set; }
-
-        public void CreateMappings(IMapperConfiguration configuration)
-        {
-            configuration.CreateMap<User, UserDetailsViewModel>()
-                .ForMember(vm => vm.ContactId, opts => opts.MapFrom(dbm => dbm.ContactId.ToString()))
-                .ForMember(vm => vm.LocationId, opts => opts.MapFrom(dbm => dbm.LocationId.ToString()))
-                .ForMember(vm => vm.LocationName, opts => opts.MapFrom(dbm => dbm.Location.Name.ToString()));
-        }
+        public ContactViewModel Contact { get; set; }
     }
 }

@@ -163,12 +163,28 @@
         [HttpPost]
         public ActionResult ReadAll([DataSourceRequest]DataSourceRequest request)
         {
-            var locations = this.ticketService
-                .GetAll()
-                .To<TicketInfoViewModel>();
+            IQueryable<TicketInfoViewModel> locations;
+            if (this.ViewBag.userId as string != null)
+            {
+                locations = this.ticketService
+                    .GetByAuthor(this.ViewBag.userId as string)
+                    .To<TicketInfoViewModel>();
+            }
+            else
+            {
+                locations = this.ticketService
+                    .GetAll()
+                    .To<TicketInfoViewModel>();
+            }
 
             var result = locations.ToDataSourceResult(request);
             return this.Json(result);
+        }
+
+        public ActionResult UserTickets(string id)
+        {
+            this.ViewBag.userId = id;
+            return this.PartialView("_GetAllInGrid");
         }
     }
 }

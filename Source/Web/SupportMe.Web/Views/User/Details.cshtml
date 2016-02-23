@@ -3,5 +3,59 @@
 @{
     ViewBag.Title = Model.User.UserName;
 }
-
-@Html.DisplayFor(m => m.User)
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <div class="text-center">
+            <img src='@Url.Action("GetAvatar", "User", new {area = string.Empty, id = Model.User.Id})' class="img-thumbnail user-avatar" alt="User avatar" />
+        </div>
+        @Html.DisplayFor(m => m.User)
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">User contact information</h3>
+            </div>
+            <div class="panel-body">
+                @if (Model.User.Contact == null)
+                {
+                    <div class="well text-danger">User do not have contact information</div>
+                }
+                else
+                {
+                    @Html.DisplayFor(m => m.User.Contact)
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">User Company information</h3>
+            </div>
+            <div class="panel-body">
+                @if (Model.Location == null)
+                {
+                    <div class="well text-danger">User is not asociated to any company location</div>
+                }
+                else
+                {
+                    <h3>Company branch contact</h3>
+                    @Html.DisplayFor(m => m.Location)
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">@Model.User.UserName's Ticket</h3>
+            </div>
+            <div class="panel-body">
+                @Html.Action("UserTickets", "Ticket", new { area = string.Empty })
+            </div>
+        </div>
+    </div>
+</div>

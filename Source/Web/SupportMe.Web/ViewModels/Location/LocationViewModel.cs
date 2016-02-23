@@ -1,12 +1,10 @@
-﻿namespace SupportMe.Web.Areas.Admin.ViewModels.Locations
+﻿namespace SupportMe.Web.ViewModels.Location
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
     using AutoMapper;
+    using Contact;
     using Data.Models;
     using Infrastructure.Mapping;
-    using ViewModels.Contacts;
 
     public class LocationViewModel : IMapFrom<Location>, IHaveCustomMappings
     {
@@ -27,8 +25,6 @@
         public int? ContactId { get; set; }
 
         public ContactViewModel Contact { get; set; }
-
-        public IEnumerable<SelectListItem> Companies { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

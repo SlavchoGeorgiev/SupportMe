@@ -1,0 +1,18 @@
+﻿@model SupportMe.Web.ViewModels.Location.LocationViewModel
+<dl>
+    <dt>Company</dt>
+    <dd>@Model.CompanyName</dd>
+    <dt>Company branch name</dt>
+    <dd>@Model.Name</dd>
+</dl>
+<div class="well">
+    @if (Model.Contact == null)
+    {
+        @:Campany branch do not have contact inforamtion
+    }
+    else
+    {
+        @:Campany branch contact
+        @Html.DisplayFor(m => m.Contact)
+    }
+</div>

@@ -1,6 +1,7 @@
 ﻿namespace SupportMe.Services.Data
 {
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
     using Contracts;
     using SupportMe.Data.Common.Contracts;
     using SupportMe.Data.Models;
@@ -42,6 +43,11 @@
             this.BaseRepository.SaveChanges();
 
             return ticket;
+        }
+
+        public IQueryable<Ticket> GetByAuthor(string userId)
+        {
+            return this.BaseRepository.All().Where(t => t.AuthorId == userId);
         }
     }
 }

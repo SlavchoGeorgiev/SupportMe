@@ -41,6 +41,7 @@
                     <div class="row">
                         <div class="col-md-10">
                             Author: <span class="text-primary"><small>@massage.Author.UserName</small> @massage.Author.FirstName @massage.Author.LastName</span>
+                            @Html.ActionLink($"To {massage.Author.UserName} profile page", "Details", "User", new {area = string.Empty, id = massage.Author.Id}, new {@class="btn btn-success btn-sm"})
                         </div>
                         @if (User.IsInRole(UserRole.Support) || User.IsInRole(UserRole.Admin))
                         {

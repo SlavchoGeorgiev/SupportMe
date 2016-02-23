@@ -1,5 +1,6 @@
 ﻿namespace SupportMe.Services.Data.Contracts
 {
+    using System.Linq;
     using SupportMe.Data.Models;
 
     public interface ITicketService : IBaseService<Ticket>
@@ -19,5 +20,7 @@
                     TicketState state,
                     TicketPriority priority,
                     int locationId);
+
+        IQueryable<Ticket> GetByAuthor(string userId);
     }
 }
