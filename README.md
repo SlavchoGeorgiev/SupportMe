@@ -38,3 +38,6 @@ Avatar upload page
 
 Creat new ticket page for user in role Support
 <img src="https://raw.githubusercontent.com/p0150n/SupportMe/master/Images/SupportCreateTicketPage.jpg"/>
+
+Ticket edit/details/add-message page
+<img src="https://raw.githubusercontent.com/p0150n/SupportMe/master/Images/TicketDetailsPage.jpg.jpg"/>
