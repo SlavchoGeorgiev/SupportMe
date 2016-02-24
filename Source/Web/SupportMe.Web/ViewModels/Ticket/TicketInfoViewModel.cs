@@ -24,6 +24,7 @@
         [Required]
         public string State { get; set; }
 
+        [Required]
         [Display(Name = "Location")]
         public string LocationId { get; set; }
 
