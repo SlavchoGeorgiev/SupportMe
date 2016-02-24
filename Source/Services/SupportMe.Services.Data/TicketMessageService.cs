@@ -5,16 +5,16 @@
     using SupportMe.Data.Common.Contracts;
     using SupportMe.Data.Models;
 
-    public class TicketMassageService : BaseService<TicketMassage>, ITicketMassageService
+    public class TicketMessageService : BaseService<TicketMassage>, ITicketMessageService
     {
-        public TicketMassageService(IDbRepository<TicketMassage> ticketMassageRepository)
+        public TicketMessageService(IDbRepository<TicketMassage> ticketMessageRepository)
         {
-            this.BaseRepository = ticketMassageRepository;
+            this.BaseRepository = ticketMessageRepository;
         }
 
         public TicketMassage Create(string content, decimal pricingUnits, int ticketId, string authorId)
         {
-            var ticketMassage = new TicketMassage()
+            var ticketMessage = new TicketMassage()
             {
                 Content = content,
                 PricingUnits = pricingUnits,
@@ -22,9 +22,9 @@
                 AuthorId = authorId
             };
 
-            this.BaseRepository.Add(ticketMassage);
+            this.BaseRepository.Add(ticketMessage);
             this.BaseRepository.SaveChanges();
-            return ticketMassage;
+            return ticketMessage;
         }
 
         public IQueryable<TicketMassage> GetAllForTicket(int ticketId)

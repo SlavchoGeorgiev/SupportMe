@@ -15,12 +15,13 @@
     public class TicketController : BaseController
     {
         private readonly ITicketService ticketService;
-        private readonly ITicketMassageService ticketMassageService;
 
-        public TicketController(ITicketService ticketService, ITicketMassageService ticketMassageService)
+        private readonly ITicketMessageService ticketMessageService;
+
+        public TicketController(ITicketService ticketService, ITicketMessageService ticketMessageService)
         {
             this.ticketService = ticketService;
-            this.ticketMassageService = ticketMassageService;
+            this.ticketMessageService = ticketMessageService;
         }
 
         [HttpGet]
@@ -124,8 +125,8 @@
                     (int)this.CurrentUser.LocationId,
                     authorId).Id;
 
-                this.ticketMassageService.Create(
-                    model.Massage.Content,
+                this.ticketMessageService.Create(
+                    model.Message.Content,
                     decimal.Zero,
                     ticketId,
                     authorId);

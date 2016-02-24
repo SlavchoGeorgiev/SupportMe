@@ -7,11 +7,11 @@
 
     public class Ticket : BaseModel<int>
     {
-        private ICollection<TicketMassage> massages;
+        private ICollection<TicketMassage> messages;
 
         public Ticket()
         {
-            this.massages = new HashSet<TicketMassage>();
+            this.messages = new HashSet<TicketMassage>();
         }
 
         [Required]
@@ -34,10 +34,10 @@
         [ForeignKey("AuthorId")]
         public virtual User Author { get; set; }
 
-        public virtual ICollection<TicketMassage> Massages
+        public virtual ICollection<TicketMassage> Messages
         {
-            get { return this.massages; }
-            set { this.massages = value; }
+            get { return this.messages; }
+            set { this.messages = value; }
         }
     }
 }

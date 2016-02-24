@@ -3,7 +3,7 @@
     using System.Linq;
     using SupportMe.Data.Models;
 
-    public interface ITicketMassageService : IBaseService<TicketMassage>
+    public interface ITicketMessageService : IBaseService<TicketMassage>
     {
         TicketMassage Create(string content, decimal pricingUnits, int ticketId, string authorId);
 

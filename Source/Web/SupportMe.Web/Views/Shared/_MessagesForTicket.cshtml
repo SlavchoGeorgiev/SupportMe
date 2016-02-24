@@ -1,14 +1,14 @@
 ﻿@using SupportMe.Data.Common.Constants
-@model SupportMe.Web.ViewModels.Massage.MassageForTicketViewModel
+@model SupportMe.Web.ViewModels.Message.MessageForTicketViewModel
 
 <div class="row">
     <div class="col-md-12">
         @using (Ajax.BeginForm(
                         actionName: "AddToTicket",
-                        controllerName: "Massage",
+                        controllerName: "Message",
                         ajaxOptions: new AjaxOptions()
                         {
-                            UpdateTargetId = "massages-list",
+                            UpdateTargetId = "messages-list",
                             HttpMethod = "POST",
                             InsertionMode = InsertionMode.Replace,
                         },
@@ -18,9 +18,9 @@
         {
             @Html.AntiForgeryToken()
             <fieldset>
-                <legend>Your massage</legend>
+                <legend>Your message</legend>
                 @Html.HiddenFor(m => m.TicketId)
-                @Html.EditorFor(m => m.Massage)
+                @Html.EditorFor(m => m.Message)
                 <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                         <button type="reset" class="btn btn-default">Cancel</button>
@@ -32,7 +32,7 @@
     </div>
 </div>
 
-@foreach (var massage in Model.Massages)
+@foreach (var message in Model.Messages)
 {
     <div class="row">
         <div class="col-md-12">
@@ -40,13 +40,13 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-10">
-                            Author: <span class="text-primary"><small>@massage.Author.UserName</small> @massage.Author.FirstName @massage.Author.LastName</span>
-                            @Html.ActionLink($"To {massage.Author.UserName} profile page", "Details", "User", new {area = string.Empty, id = massage.Author.Id}, new {@class="btn btn-success btn-sm"})
+                            Author: <span class="text-primary"><small>@message.Author.UserName</small> @message.Author.FirstName @message.Author.LastName</span>
+                            @Html.ActionLink($"To {message.Author.UserName} profile page", "Details", "User", new {area = string.Empty, id = message.Author.Id}, new {@class="btn btn-success btn-sm"})
                         </div>
                         @if (User.IsInRole(UserRole.Support) || User.IsInRole(UserRole.Admin))
                         {
                             <div class="col-md-2 text-right">
-                                Pricing units: <span class="badge">@massage.PricingUnits</span>
+                                Pricing units: <span class="badge">@message.PricingUnits</span>
                             </div>
                         }
                     </div>
@@ -54,12 +54,12 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            @(Html.Raw(massage.Content.Replace("/n", "<br/>")))
+                            @(Html.Raw(message.Content.Replace("/n", "<br/>")))
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            @massage.CreatedOn
+                            @message.CreatedOn
                         </div>
                     </div>
                 </div>

@@ -49,13 +49,13 @@
         [HttpPost]
         public ActionResult SetTo(string id, string holder, int contactId)
         {
-            string massage = "Invalid request";
+            string message = "Invalid request";
             if (id != null && this.contactHolders.Contains(holder))
             {
-                massage = this.contactService.SetTo(id, holder, contactId);
+                message = this.contactService.SetTo(id, holder, contactId);
             }
 
-            return this.PartialView("_SetMassage", massage);
+            return this.PartialView("_SetMessage", message);
         }
 
         [HttpPost]

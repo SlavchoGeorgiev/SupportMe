@@ -1,7 +1,7 @@
 ﻿namespace SupportMe.Web.Areas.Support.ViewModels.Ticket
 {
     using System.ComponentModel.DataAnnotations;
-    using TicketMassage;
+    using TicketMessage;
 
     public class CreateTicketViewModel
     {
@@ -9,6 +9,6 @@
         public TicketInputModel Ticket { get; set; }
 
         [Required]
-        public TicketMassageInputModel Massage { get; set; }
+        public TicketMessageInputModel Message { get; set; }
     }
 }

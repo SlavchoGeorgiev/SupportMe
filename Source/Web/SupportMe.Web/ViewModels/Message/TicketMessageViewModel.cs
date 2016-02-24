@@ -1,12 +1,12 @@
-﻿namespace SupportMe.Web.ViewModels.Massage
+﻿namespace SupportMe.Web.ViewModels.Message
 {
     using System;
     using System.ComponentModel.DataAnnotations;
     using Data.Models;
     using Infrastructure.Mapping;
-    using ViewModels.User;
+    using User;
 
-    public class TicketMassageViewModel : IMapFrom<TicketMassage>
+    public class TicketMessageViewModel : IMapFrom<TicketMassage>
     {
         public int? Id { get; set; }
 

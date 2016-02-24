@@ -1,8 +1,8 @@
-﻿namespace SupportMe.Web.ViewModels.Massage
+﻿namespace SupportMe.Web.ViewModels.Message
 {
     using System.ComponentModel.DataAnnotations;
 
-    public class TicketMassageInputModel
+    public class TicketMessageInputModel
     {
         [Required]
         [UIHint("BootstrapTextArea")]

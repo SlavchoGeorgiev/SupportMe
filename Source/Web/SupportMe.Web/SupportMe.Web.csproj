@@ -227,7 +227,7 @@
     <Compile Include="Areas\Support\Controllers\SupportController.cs" />
     <Compile Include="Areas\Support\Controllers\TicketController.cs" />
     <Compile Include="Areas\Support\SupportAreaRegistration.cs" />
-    <Compile Include="Areas\Support\ViewModels\TicketMassage\TicketMassageInputModel.cs" />
+    <Compile Include="Areas\Support\ViewModels\TicketMessage\TicketMessageInputModel.cs" />
     <Compile Include="Areas\Support\ViewModels\Ticket\CreateTicketViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -236,7 +236,7 @@
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
-    <Compile Include="Controllers\MassageController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TicketController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -268,13 +268,13 @@
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Areas\Support\ViewModels\Ticket\TicketInputModel.cs" />
-    <Compile Include="ViewModels\Massage\TicketMassageInputModel.cs" />
+    <Compile Include="ViewModels\Message\TicketMessageInputModel.cs" />
     <Compile Include="ViewModels\Statistics\TicketStatePieViewModel.cs" />
     <Compile Include="ViewModels\Ticket\CreateTicketViewModel.cs" />
     <Compile Include="ViewModels\Ticket\TicketDetailsViewModel.cs" />
     <Compile Include="ViewModels\Ticket\TicketInfoViewModel.cs" />
-    <Compile Include="ViewModels\Massage\MassageForTicketViewModel.cs" />
-    <Compile Include="ViewModels\Massage\TicketMassageViewModel.cs" />
+    <Compile Include="ViewModels\Message\MessageForTicketViewModel.cs" />
+    <Compile Include="ViewModels\Message\TicketMessageViewModel.cs" />
     <Compile Include="ViewModels\Ticket\TicketInputModel.cs" />
     <Compile Include="ViewModels\User\DetailsViewModel.cs" />
     <Compile Include="ViewModels\User\UserDetailsViewModel.cs" />
@@ -321,7 +321,7 @@
     <None Include="Areas\Admin\Views\Company\Index.cshtml" />
     <None Include="Areas\Admin\Views\Contact\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\ContactViewModel.cshtml" />
-    <Content Include="Areas\Admin\Views\Contact\_SetMassage.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\_SetMessage.cshtml" />
     <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_ManagmentHeader.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\LocationViewModel.cshtml" />
@@ -331,7 +331,7 @@
     <Content Include="Areas\Support\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Support\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Support\Views\Shared\EditorTemplates\TicketInputModel.cshtml" />
-    <Content Include="Areas\Support\Views\Shared\EditorTemplates\TicketMassageInputModel.cshtml" />
+    <Content Include="Areas\Support\Views\Shared\EditorTemplates\TicketMessageInputModel.cshtml" />
     <Content Include="Areas\Admin\Views\Ticket\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\TicketViewModel.cshtml" />
     <Content Include="Areas\Admin\Views\User\ManageRoles.cshtml" />
@@ -416,11 +416,11 @@
     <Content Include="Views\Shared\_TicketInfo.cshtml" />
     <Content Include="Views\Shared\_TicketEditInfo.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TicketInfoViewModel.cshtml" />
-    <Content Include="Views\Shared\_MassagesForTicket.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\TicketMassageViewModel.cshtml" />
+    <Content Include="Views\Shared\_MessagesForTicket.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TicketMessageViewModel.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TicketInputModel.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\TicketMassageInputModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TicketMessageInputModel.cshtml" />
     <Content Include="Views\Shared\_EmployeeLinksListItems.cshtml" />
     <Content Include="Views\Ticket\_GetTopOpened.cshtml" />
     <None Include="Views\Dashboard\Index.cshtml" />

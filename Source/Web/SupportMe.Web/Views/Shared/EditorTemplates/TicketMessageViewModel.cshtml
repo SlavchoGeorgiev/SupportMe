@@ -1,5 +1,5 @@
 ﻿@using SupportMe.Data.Common.Constants
-@model SupportMe.Web.ViewModels.Massage.TicketMassageViewModel
+@model SupportMe.Web.ViewModels.Message.TicketMessageViewModel
 
 @Html.HiddenFor(m => m.Id)
 @Html.EditorFor(m => m.Content)
@@ -9,5 +9,5 @@
 }
 else
 {
-    <input id="Massage_PricingUnits" name="Massage.PricingUnits" type="hidden" value="0">
+    <input id="Message_PricingUnits" name="Message.PricingUnits" type="hidden" value="0">
 }

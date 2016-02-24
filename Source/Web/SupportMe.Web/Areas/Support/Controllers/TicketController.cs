@@ -9,12 +9,12 @@
     public class TicketController : SupportController
     {
         private readonly ITicketService ticketService;
-        private readonly ITicketMassageService ticketMassageService;
+        private readonly ITicketMessageService ticketMessageService;
 
-        public TicketController(ITicketService ticketService, ITicketMassageService ticketMassageService)
+        public TicketController(ITicketService ticketService, ITicketMessageService ticketMessageService)
         {
             this.ticketService = ticketService;
-            this.ticketMassageService = ticketMassageService;
+            this.ticketMessageService = ticketMessageService;
         }
 
         [HttpGet]
@@ -41,9 +41,9 @@
                     int.Parse(model.Ticket.LocationId),
                     authorId).Id;
 
-                this.ticketMassageService.Create(
-                    model.Massage.Content,
-                    model.Massage.PricingUnits,
+                this.ticketMessageService.Create(
+                    model.Message.Content,
+                    model.Message.PricingUnits,
                     ticketId,
                     authorId);
 

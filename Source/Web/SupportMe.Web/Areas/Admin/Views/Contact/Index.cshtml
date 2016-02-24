@@ -10,7 +10,7 @@
             <h3 class="panel-title">Contacts</h3>
         </div>
         <div class="panel-body">
-            <div id="set-massage"></div>
+            <div id="set-message"></div>
             <div class="table-responsive">
                 @(Html.Kendo()
                   .Grid<ContactViewModel>()
@@ -35,7 +35,7 @@
                                         HttpMethod = "POST",
                                         InsertionMode = InsertionMode.Replace,
                                     },
-                                    new { @class = "btn btn-success", data_ajax_update = "\\#set-massage" })
+                                    new { @class = "btn btn-success", data_ajax_update = "\\#set-message" })
                                     .ToString())
                               .HeaderTemplate($"Set this for {Model.Holder}")
                               .Width(30);

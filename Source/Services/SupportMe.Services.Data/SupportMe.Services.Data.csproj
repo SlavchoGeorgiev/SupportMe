@@ -71,7 +71,7 @@
     <Compile Include="Contracts\ILocationService.cs" />
     <Compile Include="Contracts\ILogService.cs" />
     <Compile Include="Contracts\IStatisticsService.cs" />
-    <Compile Include="Contracts\ITicketMassageService.cs" />
+    <Compile Include="Contracts\ITicketMessageService.cs" />
     <Compile Include="Contracts\ITicketService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="LocationService.cs" />
@@ -80,7 +80,7 @@
     <Compile Include="Results\TicketsCountByState.cs" />
     <Compile Include="Results\UpdateUserResult.cs" />
     <Compile Include="StatisticsService.cs" />
-    <Compile Include="TicketMassageService.cs" />
+    <Compile Include="TicketMessageService.cs" />
     <Compile Include="TicketService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
