@@ -25,6 +25,7 @@
 
         [HttpGet]
         [ActionName("Read")]
+        [OutputCache(Duration = 3 * 60)]
         public ActionResult ReadGet([DataSourceRequest]DataSourceRequest request)
         {
             var companies = this.companyService
