@@ -160,31 +160,21 @@
             return this.PartialView("_GetAllInGrid");
         }
 
+        public ActionResult UserTickets(string id)
+        {
+            var author = this.UserService.GetById(id).FirstOrDefault()?.UserName;
+            return this.PartialView("_GetAllInGrid", author);
+        }
+
         [HttpPost]
         public ActionResult ReadAll([DataSourceRequest]DataSourceRequest request)
         {
-            IQueryable<TicketInfoViewModel> locations;
-            if (this.ViewBag.userId as string != null)
-            {
-                locations = this.ticketService
-                    .GetByAuthor(this.ViewBag.userId as string)
-                    .To<TicketInfoViewModel>();
-            }
-            else
-            {
-                locations = this.ticketService
-                    .GetAll()
-                    .To<TicketInfoViewModel>();
-            }
+            var tickets = this.ticketService
+                  .GetAll()
+                  .To<TicketInfoViewModel>();
 
-            var result = locations.ToDataSourceResult(request);
+            var result = tickets.ToDataSourceResult(request);
             return this.Json(result);
-        }
-
-        public ActionResult UserTickets(string id)
-        {
-            this.ViewBag.userId = id;
-            return this.PartialView("_GetAllInGrid");
         }
     }
 }

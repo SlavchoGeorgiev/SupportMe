@@ -29,7 +29,7 @@
 
         public string Location { get; set; }
 
-        [Display(Name = "Uathor Username")]
+        [Display(Name = "Author Username")]
         public string Author { get; set; }
 
         [Display(Name = "Created on")]

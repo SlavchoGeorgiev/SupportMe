@@ -160,7 +160,7 @@
                     throw new Exception(result.Errors.First());
                 }
 
-                manager.AddToRole(user.Id, UserRole.Support);
+                manager.AddToRole(user.Id, UserRole.Employee);
 
                 for (int i = 1; i <= 50; i++)
                 {
@@ -178,7 +178,7 @@
                         throw new Exception(result.Errors.First());
                     }
 
-                    manager.AddToRole(userX.Id, UserRole.Support);
+                    manager.AddToRole(userX.Id, UserRole.Employee);
                 }
             }
         }

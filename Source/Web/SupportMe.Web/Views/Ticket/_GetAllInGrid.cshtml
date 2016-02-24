@@ -1,6 +1,7 @@
 ﻿@using SupportMe.Common.Constants
 @using SupportMe.Data.Common.Constants
 @using SupportMe.Web.ViewModels.Ticket
+@model string
 
 @(Html.Kendo()
     .Grid<TicketInfoViewModel>()
@@ -52,6 +53,13 @@
             .Sort(sort =>
             {
                 sort.Add(m => m.CreatedOn).Descending();
+            })
+            .Filter(filter =>
+            {
+                if (Model != null)
+                {
+                    filter.Add(m => m.Author).Contains(Model);
+                }
             })
             .Read(read => read.Action("ReadAll", "Ticket"));
     }))

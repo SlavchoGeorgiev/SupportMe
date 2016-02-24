@@ -49,10 +49,14 @@
             }
 
             model.User = this.Mapper.Map<UserDetailsViewModel>(user);
-            var userAddress = this.addressService.GetById(model.User.Contact.AddressId).FirstOrDefault();
-            if (userAddress != null && model.User.Contact != null)
+
+            if (model.User.Contact != null)
             {
-                model.User.Contact.Address = this.Mapper.Map<AddressViewModel>(userAddress);
+                var userAddress = this.addressService.GetById(model.User.Contact.AddressId).FirstOrDefault();
+                if (userAddress != null)
+                {
+                    model.User.Contact.Address = this.Mapper.Map<AddressViewModel>(userAddress);
+                }
             }
 
             var userLocation = this.locationService.GetById(model.User.LocationId).FirstOrDefault();
