@@ -22,6 +22,8 @@
   Ticket has State, Type and Priority
   Main User roles are Administrator, Support, Company manager and Employee
 
+##<a href="http://support-me.azurewebsites.net/" target="_blank"> Live demo</a>
+
 ##Demo screenshots
 
 This is view of home page
