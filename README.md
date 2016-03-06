@@ -10,17 +10,17 @@
   This web app use some data layers for access MSSQL Database server. First layer is Entity Framework 6, followed by implementation of Repository pattern, and data service layer. This abstraction on different layer has good separation of concerns and facilitate unit tests writing.
   
   Base database entities are: Company, Location, User(in diferent roles), Contact, Address, Ticket, Message, Team
-  Company has many Locations(Branches)
-  Company has Contact
-  Location has many Users
-  Location has Contact
-  User has Contact
-  User has many Tickets
-  Contact has Address
-  Users has many Roles
-  Ticket has many Messages
-  Ticket has State, Type and Priority
-  Main User roles are Administrator, Support, Company manager and Employee
+-  Company has many Locations(Branches)
+-  Company has Contact
+-  Location has many Users
+-  Location has Contact
+-  User has Contact
+-  User has many Tickets
+-  Contact has Address
+-  Users has many Roles
+-  Ticket has many Messages
+-  Ticket has State, Type and Priority
+-  Main User roles are Administrator, Support, Company manager and Employee
 
 ##<a href="http://support-me.azurewebsites.net/" target="_blank"> Live demo</a>
 
