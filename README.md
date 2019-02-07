@@ -27,19 +27,19 @@
 ##Demo screenshots
 
 This is view of home page
-<img src="https://raw.githubusercontent.com/p0150n/SupportMe/master/Images/EmployeeHomePage.jpg"/>
+<img src="https://raw.githubusercontent.com/SlavchoGeorgiev/SupportMe/master/Images/EmployeeHomePage.jpg"/>
 
 Administration view of locations 
-<img src="https://raw.githubusercontent.com/p0150n/SupportMe/master/Images/AdminLocationPanel.jpg"/>
+<img src="https://raw.githubusercontent.com/SlavchoGeorgiev/SupportMe/master/Images/AdminLocationPanel.jpg"/>
 
 User info page accessible from authorized users.
-<img src="https://raw.githubusercontent.com/p0150n/SupportMe/master/Images/UserInfoPage.jpg"/>
+<img src="https://raw.githubusercontent.com/SlavchoGeorgiev/SupportMe/master/Images/UserInfoPage.jpg"/>
 
 Avatar upload page
-<img src="https://raw.githubusercontent.com/p0150n/SupportMe/master/Images/AvatarUploadPage.jpg"/>
+<img src="https://raw.githubusercontent.com/SlavchoGeorgiev/SupportMe/master/Images/AvatarUploadPage.jpg"/>
 
 Creat new ticket page for user in role Support
-<img src="https://raw.githubusercontent.com/p0150n/SupportMe/master/Images/SupportCreateTicketPage.jpg"/>
+<img src="https://raw.githubusercontent.com/SlavchoGeorgiev/SupportMe/master/Images/SupportCreateTicketPage.jpg"/>
 
 Ticket edit/details/add-message page
-<img src="https://raw.githubusercontent.com/p0150n/SupportMe/master/Images/TicketDetailsPage.jpg"/>
+<img src="https://raw.githubusercontent.com/SlavchoGeorgiev/SupportMe/master/Images/TicketDetailsPage.jpg"/>
