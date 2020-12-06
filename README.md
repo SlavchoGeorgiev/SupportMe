@@ -3,13 +3,10 @@
 ## Build status
 [![Build status](https://ci.appveyor.com/api/projects/status/0xqake9jbu20d8oe?svg=true)](https://ci.appveyor.com/project/SlavchoGeorgiev/supportme)
 
-###Overview
-  Support Me System is web application which aims to facilitate communication between company providing support service and their clients. Support Me System is designed to be simple enough and to offer all main required features. Software design is flexible allowing to be easy extensible without need of big modifications of existing code.
-
-###Data Layer
-  This web app use some data layers for access MSSQL Database server. First layer is Entity Framework 6, followed by implementation of Repository pattern, and data service layer. This abstraction on different layer has good separation of concerns and facilitate unit tests writing.
+### Overview
+Support Me System is a web application developed as an exercise and it is **not Production-ready**. This application can facilitate communication between companies that provide support and their clients.  
   
-  Base database entities are: Company, Location, User(in diferent roles), Contact, Address, Ticket, Message, Team
+Main entities are: Company, Location, User(in diferent roles), Contact, Address, Ticket, Message, Team
 -  Company has many Locations(Branches)
 -  Company has Contact
 -  Location has many Users
